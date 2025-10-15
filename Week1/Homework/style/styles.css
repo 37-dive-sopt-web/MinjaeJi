@@ -42,15 +42,106 @@ header {
 .icon-section {
   display: flex;
 }
+
 a {
   display: flex;
   padding: 10px;
   border-radius: 50%;
   align-items: center;
+  text-decoration: none;
+  color: inherit; /* 부모의 글자 색 따라가기 */
 }
+
 a img {
   width: 30px;
   height: 30px;
 }
 
+main {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+main > div {
+  flex: 1; /* 나머지 공간을 다 차지하도록 */
+}
+
 /*hero section style*/
+
+#hero {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid rgb(234, 233, 233);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border-radius: 20px;
+  padding: 20px;
+}
+
+#hero img {
+  width: 200px;
+  height: 200px;
+  cursor: pointer;
+}
+
+#hero > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.button-section {
+  display: flex;
+  gap: 15px;
+}
+
+button {
+  position: relative;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 15px;
+  background-color: rgb(254, 255, 221);
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.2s ease; /* 부드럽게 변화 */
+}
+
+button:hover {
+  transform: translateY(-3px) scale(1.05); /* 살짝 위로 떠오름 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.18), 0 4px 8px rgb(254, 255, 221);
+  font-weight: 500;
+}
+
+/*side-bar style*/
+
+aside {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 130px;
+  border: 1px solid rgb(216, 216, 216);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  color: rgb(146, 146, 146);
+  font-weight: 400;
+  border-radius: 8px;
+}
+
+li:hover {
+  color: black;
+  font-weight: 600;
+  background-color: rgb(252, 237, 251);
+  transition-duration: 0.5s; /* 부드러운 느낌 ㅎㅎ */
+}
