@@ -1,0 +1,56 @@
+body {
+  margin: 0; /* 웹 페이지 전체 적용 */
+}
+
+/*header style*/
+
+header {
+  position: sticky;
+  top: 0; /* 헤더 상단 고정 */
+  z-index: 50;
+  background-color: rgb(254, 230, 253);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+}
+
+.profile {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover; /* 이미지 왜곡 방지 */
+}
+
+.name-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  cursor: default;
+}
+
+#name {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+#name + div {
+  color: rgb(133, 133, 131); /* 이름과 형제 라인 (바로 아래 하나만 선택)*/
+}
+
+.icon-section {
+  display: flex;
+}
+a {
+  display: flex;
+  padding: 10px;
+  border-radius: 50%;
+  align-items: center;
+}
+a img {
+  width: 30px;
+  height: 30px;
+}
+
+/*hero section style*/
