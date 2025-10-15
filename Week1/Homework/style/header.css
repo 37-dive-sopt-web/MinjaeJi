@@ -1,0 +1,61 @@
+/*header style*/
+
+header {
+  position: sticky;
+  top: 0; /* 헤더 상단 고정 */
+  height: fit-content;
+  z-index: 50;
+  background-color: rgb(254, 230, 253);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+}
+
+.profile {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover; /* 이미지 왜곡 방지 */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.2s ease; /* 부드럽게 변화 */
+  cursor: pointer;
+}
+
+.profile:hover {
+  transform: translateY(-3px) scale(1.05); /* 살짝 위로 떠오름 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.18), 0 4px 8px rgba(0, 0, 0, 0.24);
+}
+
+.name-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  cursor: default;
+}
+
+#name {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+#name + div {
+  color: rgb(133, 133, 131); /* 이름과 형제 라인 (바로 아래 하나만 선택)*/
+}
+
+.icon-section {
+  display: flex;
+}
+
+.icon-section img {
+  padding: 10px;
+  width: 30px;
+  height: 30px;
+  transition: all 0.2s ease; /* 부드럽게 변화 */
+  cursor: pointer;
+}
+
+.icon-section img:hover {
+  transform: translateY(-3px) scale(1.05); /* 살짝 위로 떠오름 */
+}

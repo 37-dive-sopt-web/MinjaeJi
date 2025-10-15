@@ -1,0 +1,79 @@
+/* 카드 섹션 ui 구현 */
+
+.card-section {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.card {
+  display: flex;
+  width: 220px;
+  flex-direction: column;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.2s ease; /* 부드럽게 변화 */
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-3px) scale(1.05); /* 살짝 위로 떠오름 */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  padding-bottom: 30px;
+}
+
+.title {
+  font-weight: 600;
+}
+
+.card > img {
+  width: 100%;
+  height: auto;
+  border: 1px black solid;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.heart {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgb(254, 230, 253);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  transition: all 0.2s ease; /* 부드럽게 변화 */
+}
+.heart:hover {
+  background-color: rgb(252, 203, 252);
+}
+
+.heart img {
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
+}
+
+.description {
+  color: rgb(116, 115, 115);
+  font-size: 13px;
+  white-space: nowrap; /* 한 줄만 표시 */
+  overflow: hidden; /* 넘치는 부분 숨김 */
+  text-overflow: ellipsis; /* … 표시 */
+  padding: 10px;
+  padding-bottom: 50px;
+  transition: all 0.3s ease; /* 부드러운 애니메이션 */
+}
+
+.description:hover {
+  word-break: break-all;
+  white-space: normal; /* 여러 줄 허용 */
+  overflow: visible; /* 넘치는 부분 보이게 */
+}

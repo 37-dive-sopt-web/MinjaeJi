@@ -1,0 +1,29 @@
+/* 스킬 스타일 */
+
+#skill ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+#skill li {
+  color: black;
+  font-size: small;
+  padding: 5px 20px;
+  border-radius: 15px;
+  align-self: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  cursor: default;
+  font-size: 16px;
+}
+
+.tag-skill {
+  background-color: rgb(254, 230, 253);
+}
+
+.tag-interest {
+  background-color: rgb(254, 255, 221);
+}

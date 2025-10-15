@@ -1,0 +1,20 @@
+/* 한 마디와 푸터 부분...*/
+
+#last-word {
+  cursor: default;
+  background-color: rgb(254, 255, 221);
+}
+
+/*footer 스타일 */
+#footer {
+  cursor: default;
+  padding: 20px;
+  background-color: rgb(254, 230, 253);
+  font-weight: 400;
+}
+#footer > div {
+  display: flex;
+  justify-self: flex-end;
+  gap: 10px;
+  color: gray;
+}

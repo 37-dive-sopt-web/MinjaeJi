@@ -1,0 +1,48 @@
+/*side-bar style*/
+
+aside {
+  position: sticky;
+  top: 125px;
+  left: 0;
+  width: 130px;
+  height: fit-content;
+  border: 1px solid rgb(216, 216, 216);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+aside ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+aside li a {
+  padding: 10px;
+}
+aside li {
+  color: rgb(128, 128, 128);
+  border-radius: 5px;
+}
+
+/* 첫 번째 li는 위쪽 모서리만 둥글게 */
+aside li:first-child {
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+/* 마지막 li는 아래쪽 모서리만 둥글게 */
+aside li:last-child {
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+aside li:hover {
+  color: black;
+  font-weight: 600;
+  background-color: rgb(252, 237, 251);
+  transition-duration: 0.5s; /* 부드러운 느낌 ㅎㅎ */
+}
