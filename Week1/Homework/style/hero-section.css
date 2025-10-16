@@ -15,7 +15,6 @@
 
 #hero-section > div {
   display: flex;
-  flex: 1;
   flex-direction: column;
   gap: 10px;
 }
