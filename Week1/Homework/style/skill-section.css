@@ -1,6 +1,6 @@
 /* 스킬 스타일 */
 
-#skill ul {
+#skill-section ul {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -9,7 +9,7 @@
   padding: 0;
 }
 
-#skill li {
+#skill-section li {
   color: black;
   font-size: small;
   padding: 5px 20px;

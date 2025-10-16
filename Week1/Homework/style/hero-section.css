@@ -1,6 +1,6 @@
 /*hero section style*/
 
-#hero {
+#hero-section {
   display: flex;
   align-items: center;
   gap: 30px;
@@ -9,13 +9,13 @@
   border-radius: 20px;
 }
 
-#hero img {
+#hero-section img {
   width: 200px;
   height: 200px;
   cursor: pointer;
 }
 
-#hero > div {
+#hero-section > div {
   display: flex;
   flex: 1;
   flex-direction: column;
