@@ -5,7 +5,6 @@ body {
   margin: 0; /* 웹 페이지 전체 적용 */
 }
 
-/* 공통 영역...? */
 a {
   display: flex;
   align-items: center;
