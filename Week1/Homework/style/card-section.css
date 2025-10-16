@@ -50,9 +50,11 @@
   align-items: center;
   margin-left: auto;
   transition: all 0.2s ease; /* 부드럽게 변화 */
+  border: none;
 }
 .heart:hover {
   background-color: rgb(252, 203, 252);
+  cursor: pointer;
 }
 
 .heart img {
