@@ -1,0 +1,26 @@
+/* 공통 스타일 */
+
+/* 헤더 스타일 */
+header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* 정확히 3등분 되기 위함 */
+  align-items: center;
+  padding: 30px 40px;
+  background-color: rgb(243, 241, 202);
+}
+
+header span {
+  justify-self: start;
+  font-size: 2rem;
+}
+
+header h1 {
+  justify-self: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+header div {
+  justify-self: end;
+  text-align: right;
+}
