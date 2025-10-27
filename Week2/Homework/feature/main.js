@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
         (ageInput.value === "" || member.age === Number(ageInput.value))
       );
     });
+    tableBody.innerHTML = "";
     renderResultTable(filteredResult);
   });
 });
