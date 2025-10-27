@@ -25,7 +25,7 @@
   margin-top: 10px;
 }
 
-.button-section button {
+.button-section a {
   position: relative;
   padding: 10px 20px;
   border: none;
@@ -36,7 +36,7 @@
   transition: all 0.2s ease; /* 부드럽게 변화 */
 }
 
-.button-section button:hover {
+.button-section a:hover {
   transform: translateY(-3px) scale(1.05); /* 살짝 위로 떠오름 */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.18), 0 4px 8px rgb(254, 255, 221);
   font-weight: 500;
