@@ -59,7 +59,11 @@ document.addEventListener("DOMContentLoaded", () => {
         (ageInput.value === "" || member.age === Number(ageInput.value))
       );
     });
-    tableBody.innerHTML = "";
+    tableBody.innerHTML = ""; // 이전 결과 초기화
     renderResultTable(filteredResult);
+  });
+  resetBtn.addEventListener("click", () => {
+    searchInputs.forEach((input) => (input.value = ""));
+    renderResultTable(membersData);
   });
 });
