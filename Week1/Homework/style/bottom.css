@@ -8,13 +8,13 @@
 /*footer 스타일 */
 #footer {
   cursor: default;
-  padding: 20px;
+  padding: 1.25rem;
   background-color: rgb(254, 230, 253);
   font-weight: 400;
 }
 #footer > div {
   display: flex;
   justify-self: flex-end;
-  gap: 10px;
+  gap: 0.625rem;
   color: gray;
 }

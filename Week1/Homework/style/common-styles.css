@@ -14,8 +14,8 @@ a {
 
 main {
   display: flex;
-  gap: 20px;
-  padding: 20px;
+  gap: 1.25rem;
+  padding: 1.25rem;
   padding-top: 0;
 }
 main > div {
@@ -29,19 +29,19 @@ h1 {
 }
 
 h2 {
-  line-height: 45px;
-  margin-top: 0px;
-  margin-bottom: 35px;
-  border-bottom: 1.5px solid rgb(169, 169, 169);
+  line-height: 2.8125rem;
+  margin-top: 0rem;
+  margin-bottom: 2.1875rem;
+  border-bottom: 1.5008px solid rgb(169, 169, 169);
 }
 
 main section {
-  margin-bottom: 100px;
-  scroll-margin-top: 125px; /* 네비게이션을 통해 이동 시 헤더 공간만큼 top 띄우기 */
+  margin-bottom: 6.25rem;
+  scroll-margin-top: 7.8125rem; /* 네비게이션을 통해 이동 시 헤더 공간만큼 top 띄우기 */
   border: 1px solid rgb(234, 233, 233);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  border-radius: 20px;
-  padding: 30px;
+  border-radius: 1.25rem;
+  padding: 1.875rem;
 }
 
 figure {
