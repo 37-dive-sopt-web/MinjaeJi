@@ -22,6 +22,11 @@ main > div {
   flex: 1; /* 나머지 공간을 다 차지하도록 */
 }
 
+h1 {
+  font-size: x-large;
+  font-weight: bold;
+}
+
 h2 {
   line-height: 45px;
   margin-top: 0px;
