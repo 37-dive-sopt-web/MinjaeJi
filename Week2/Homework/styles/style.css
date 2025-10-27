@@ -2,10 +2,11 @@
 main {
   display: flex;
   flex-direction: column;
-  gap: 0.625rem;
+  gap: 1.25rem;
   align-items: center;
-  margin-top: 0.625rem;
+  margin-top: 6.875rem;
 }
+
 section {
   width: 70%;
   border-radius: 0.9375rem;
@@ -23,7 +24,6 @@ section h2 {
 
 button {
   padding: 0.625rem 0.9375rem;
-  box-sizing: border-box;
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
@@ -41,6 +41,9 @@ button:hover {
 
 /* 헤더 스타일 */
 header {
+  position: fixed;
+  top: 0;
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr; /* 정확히 3등분 되기 위함 */
   align-items: center;
@@ -61,7 +64,6 @@ header h1 {
 }
 
 header div {
-  justify-self: end;
   text-align: right;
   font-weight: 500;
 }
@@ -93,7 +95,6 @@ header div {
 .triple-row select {
   padding: 0.625rem;
   font-size: 0.875rem;
-  box-sizing: border-box;
   width: 100%;
   border: 0.0625rem solid rgb(158, 158, 158);
   border-radius: 0.5rem;
@@ -133,15 +134,22 @@ header div {
 table {
   width: 100%;
   border-collapse: separate;
-  border-radius: 0.75rem 0.75rem 0 0;
+  border-radius: 0.75rem;
   overflow: hidden;
   margin-top: 1.25rem;
+  box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.12),
+    0 0.0625rem 0.125rem rgba(0, 0, 0, 0.24);
 }
 
-th,
-td {
+th {
   padding: 0.9375rem;
   background-color: rgb(243, 241, 202);
+  text-align: center;
+  cursor: default;
+}
+
+td {
+  padding: 0.9375rem;
   text-align: center;
   cursor: default;
 }
