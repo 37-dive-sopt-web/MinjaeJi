@@ -31,4 +31,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const membersData = JSON.parse(localStorage.getItem("membersData")) || [];
   renderResultTable(membersData);
+
+  searchBtn.addEventListener("click", () => {
+    const [
+      nameInput,
+      engInput,
+      githubInput,
+      genderSelect,
+      roleSelect,
+      groupInput,
+      ageInput,
+    ] = document.querySelectorAll(
+      ".filter-section input, .filter-section select"
+    );
+    const filteredResult = membersData.filter((member) => {
+      return (
+        member.name.includes(nameInput.value) &&
+        member.englishName.includes(engInput.value) &&
+        member.github.includes(githubInput.value) &&
+        member.gender.includes(genderSelect.value) &&
+        member.role.includes(roleSelect.value) &&
+        member.codeReviewGroup === Number(groupInput.value) &&
+        member.age === Number(ageInput.value)
+      );
+    });
+    renderResultTable(filteredResult);
+  });
 });
