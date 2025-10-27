@@ -46,13 +46,17 @@ document.addEventListener("DOMContentLoaded", () => {
     );
     const filteredResult = membersData.filter((member) => {
       return (
-        member.name.includes(nameInput.value) &&
-        member.englishName.includes(engInput.value) &&
-        member.github.includes(githubInput.value) &&
-        member.gender.includes(genderSelect.value) &&
-        member.role.includes(roleSelect.value) &&
-        member.codeReviewGroup === Number(groupInput.value) &&
-        member.age === Number(ageInput.value)
+        (nameInput.value === "" || member.name.includes(nameInput.value)) &&
+        (engInput.value === "" ||
+          member.englishName.includes(engInput.value)) &&
+        (githubInput.value === "" ||
+          member.github.includes(githubInput.value)) &&
+        (genderSelect.value === "" ||
+          member.gender.includes(genderSelect.value)) &&
+        (roleSelect.value === "" || member.role.includes(roleSelect.value)) &&
+        (groupInput.value === "" ||
+          member.codeReviewGroup === Number(groupInput.value)) &&
+        (ageInput.value === "" || member.age === Number(ageInput.value))
       );
     });
     renderResultTable(filteredResult);
