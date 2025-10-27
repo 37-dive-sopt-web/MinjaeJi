@@ -14,7 +14,40 @@
       <div>37기 DIVE SOPT 웹 YB 지민재 ✌🏻</div>
     </header>
     <main>
-      <section></section>
+      <section class="filter-section">
+        <input type="text" placeholder="이름을 입력하세요." />
+
+        <input type="text" placeholder="영문 이름을 입력하세요." />
+
+        <div class="triple-row">
+          <input type="text" placeholder="깃허브 아이디를 입력하세요." />
+
+          <select>
+            <option value="">성별</option>
+            <option value="male">male</option>
+            <option value="female">female</option>
+            <option value="alien">alien</option>
+          </select>
+
+          <select>
+            <option value="">역할</option>
+            <option value="YB">YB</option>
+            <option value="OB">OB</option>
+          </select>
+        </div>
+
+        <div class="half-row">
+          <input type="text" placeholder="금잔디 조를 입력하세요. (1~9)" />
+          <input type="text" placeholder="나이를 입력하세요." />
+        </div>
+
+        <div class="half-row">
+          <button type="button" id="searchBtn">적용</button>
+          <button type="button" id="resetBtn">초기화</button>
+        </div>
+      </section>
+
+      <section>input 결과 자리</section>
     </main>
   </body>
 </html>
