@@ -2,16 +2,41 @@
 main {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 0.625rem;
 }
 section {
   width: 70%;
-  border-radius: 8px;
+  border-radius: 0.9375rem;
   background-color: white;
-  padding: 20px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  padding: 1.5625rem;
+  border: 1px solid rgb(223, 223, 223);
+  box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.12),
+    0 0.0625rem 0.125rem rgba(0, 0, 0, 0.24);
+}
+section h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  cursor: default;
+}
+
+button {
+  padding: 0.625rem 0.9375rem;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.12),
+    0 0.0625rem 0.125rem rgba(0, 0, 0, 0.24);
+  background-color: rgb(243, 241, 202);
+  transition: box-shadow 0.2s;
+}
+
+button:hover {
+  font-weight: 600;
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.12),
+    0 0.125rem 0.3125rem rgba(0, 0, 0, 0.24);
 }
 
 /* 헤더 스타일 */
@@ -19,8 +44,9 @@ header {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr; /* 정확히 3등분 되기 위함 */
   align-items: center;
-  padding: 30px 40px;
+  padding: 1.875rem 2.5rem;
   background-color: rgb(243, 241, 202);
+  z-index: 50;
 }
 
 header span {
@@ -30,81 +56,92 @@ header span {
 
 header h1 {
   justify-self: center;
-  font-size: 1.3rem;
+  font-size: 20.8px;
   font-weight: 600;
 }
 
 header div {
   justify-self: end;
   text-align: right;
+  font-weight: 500;
 }
 
 /* 검색 필터 스타일 */
 .filter-section {
   display: grid;
-  gap: 20px;
+  gap: 1.25rem;
 }
 
 /* 기본 스타일 */
 .filter-section input {
-  padding: 10px;
-  font-size: 14px;
+  padding: 0.625rem;
+  font-size: 0.875rem;
   box-sizing: border-box;
   width: 100%;
-  border: 1px solid rgb(158, 158, 158);
-  border-radius: 8px;
+  border: 0.0625rem solid rgb(158, 158, 158);
+  border-radius: 0.5rem;
   outline: none;
   caret-color: rgb(210, 199, 1);
-}
-
-.filter-section button {
-  padding: 10px;
-  font-size: 15px;
-  box-sizing: border-box;
-  width: 100%;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  background-color: rgb(243, 241, 202);
-  transition: box-shadow 0.2s;
-}
-
-.filter-section button:hover {
-  font-weight: 600;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12), 0 2px 5px rgba(0, 0, 0, 0.24);
 }
 
 .triple-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 0.625rem;
 }
 
-.triple-row input,
 .triple-row select {
-  padding: 10px;
-  font-size: 14px;
+  padding: 0.625rem;
+  font-size: 0.875rem;
   box-sizing: border-box;
   width: 100%;
-  border: 1px solid rgb(158, 158, 158);
-  border-radius: 8px;
+  border: 0.0625rem solid rgb(158, 158, 158);
+  border-radius: 0.5rem;
   outline: none;
+  cursor: pointer;
 }
 
-.triple-row input:focus,
 .triple-row select:focus {
   border-color: rgb(243, 241, 202);
-  box-shadow: 0 0 5px rgb(243, 241, 202);
+  box-shadow: 0 0 0.3125rem rgb(243, 241, 202);
 }
 
 .half-row {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
+  gap: 0.625rem;
 }
 
 .half-row input,
 .half-row button {
   width: 50%;
+  font-size: 0.9375rem;
+}
+
+/* 리스트 섹션 스타일 */
+.list-section .list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-header .button-group {
+  display: flex;
+  gap: 0.625rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-radius: 0.75rem 0.75rem 0 0;
+  overflow: hidden;
+  margin-top: 1.25rem;
+}
+
+th,
+td {
+  padding: 0.9375rem;
+  background-color: rgb(243, 241, 202);
+  text-align: center;
+  cursor: default;
 }

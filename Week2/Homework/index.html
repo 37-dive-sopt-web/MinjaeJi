@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>관리자 페이지</title>
+    <link rel="icon" href="/admin-icon.png" type="icon" />
     <link rel="stylesheet" href="./styles/reset.css" />
     <link rel="stylesheet" href="./styles/style.css" />
   </head>
@@ -11,10 +12,11 @@
     <header>
       <span>😍</span>
       <h1>웹계인 관리 페이지</h1>
-      <div>37기 DIVE SOPT 웹 YB 지민재 ✌🏻</div>
+      <div>37기 DIVE SOPT 웹 YB 지민재 😋</div>
     </header>
     <main>
       <section class="filter-section">
+        <h2>검색 필터</h2>
         <input type="text" placeholder="이름을 입력하세요." />
 
         <input type="text" placeholder="영문 이름을 입력하세요." />
@@ -47,7 +49,31 @@
         </div>
       </section>
 
-      <section>input 결과 자리</section>
+      <section class="list-section">
+        <div class="list-header">
+          <h2>37기 웹 파트 목록</h2>
+          <div class="button-group">
+            <button id="delete-btn">선택 삭제</button>
+            <button id="add-btn">추가</button>
+          </div>
+        </div>
+
+        <table id="members-table">
+          <thead>
+            <tr>
+              <th><input type="checkbox" id="select-all" /></th>
+              <th>이름</th>
+              <th>영문 이름</th>
+              <th>GitHub</th>
+              <th>성별</th>
+              <th>역할</th>
+              <th>금잔디 조</th>
+              <th>나이</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
     </main>
   </body>
 </html>
