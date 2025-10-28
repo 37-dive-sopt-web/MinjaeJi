@@ -1,0 +1,49 @@
+html {
+  scroll-behavior: smooth; /* 스크롤 부드럽게 */
+}
+body {
+  margin: 0; /* 웹 페이지 전체 적용 */
+}
+
+a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit; /* 부모의 글자 색 따라가기 */
+}
+
+main {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  padding-top: 0;
+}
+main > div {
+  flex: 1; /* 나머지 공간을 다 차지하도록 */
+}
+
+h1 {
+  margin: 0;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+h2 {
+  line-height: 2.8125rem;
+  margin-top: 0rem;
+  margin-bottom: 2.1875rem;
+  border-bottom: 1.5008px solid rgb(169, 169, 169);
+}
+
+main section {
+  margin-bottom: 6.25rem;
+  scroll-margin-top: 7.8125rem; /* 네비게이션을 통해 이동 시 헤더 공간만큼 top 띄우기 */
+  border: 1px solid rgb(234, 233, 233);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border-radius: 1.25rem;
+  padding: 1.875rem;
+}
+
+p {
+  margin: 0; /* 기본 스타일 제거 */
+}
