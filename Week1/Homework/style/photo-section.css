@@ -1,0 +1,45 @@
+#photo-section {
+  width: 100%;
+  height: 18.75rem;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.photo-book {
+  display: flex;
+  gap: 1.25rem;
+  width: 200%; /* 두 세트를 한 줄에 나란히 배치 */
+  position: absolute;
+  animation: aniScroll 15s linear infinite;
+  transition: transform 0.2s ease;
+  will-change: transform;
+}
+
+.photo-book img {
+  width: 15.625rem;
+  height: 9.375rem;
+  object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border-radius: 0.625rem;
+}
+
+.photo-book:hover {
+  animation-play-state: paused;
+}
+
+.photo-book img:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transform: scale(1.05);
+}
+
+@keyframes aniScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* 한 세트만큼 이동 */
+  }
+}
