@@ -24,24 +24,25 @@ export function handleSearchMember(renderResultTable) {
       return;
     }
 
-    if (
-      codeReviewGroupInput &&
-      (!/^[1-9]+$/.test(codeReviewGroupInput.value) ||
-        Number(codeReviewGroupInput.value) < 1 ||
-        Number(codeReviewGroupInput.value) > 9)
-    ) {
-      alert("금잔디 조는 1부터 9 사이의 정수만 입력 가능합니다.");
-      return;
+    if (codeReviewGroupInput.value) {
+      const codeReviewGroup = Number(codeReviewGroupInput.value);
+      if (
+        !Number.isInteger(codeReviewGroup) ||
+        codeReviewGroup < 1 ||
+        codeReviewGroup > 9
+      ) {
+        alert("금잔디 조는 1부터 9 사이의 정수만 입력 가능합니다.");
+        return;
+      }
     }
 
-    if (
-      ageInput &&
-      (!/^\d+$/.test(ageInput.value) || Number(ageInput.value) <= 0)
-    ) {
-      alert("나이는 0보다 큰 정수만 입력할 수 있습니다.");
-      return;
+    if (ageInput.value) {
+      const age = Number(ageInput.value);
+      if (!Number.isInteger(age) || age <= 0) {
+        alert("나이는 0보다 큰 정수만 입력할 수 있습니다.");
+        return;
+      }
     }
-
     const filteredMembersData = membersData.filter((member) => {
       return (
         (nameInput.value === "" || member.name.includes(nameInput.value)) &&
