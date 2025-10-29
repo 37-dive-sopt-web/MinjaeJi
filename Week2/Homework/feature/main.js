@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchInputs = document.querySelectorAll(
     ".filter-section input, .filter-section select"
   );
-  const searchBtn = document.getElementById("searchBtn");
-  const resetBtn = document.getElementById("resetBtn");
+  const searchBtn = document.getElementById("search-btn");
+  const resetBtn = document.getElementById("reset-btn");
 
   function renderResultTable(membersData) {
     tableBody.innerHTML = ""; // 이전 결과 초기화
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderResultTable(membersData);
   });
 
-  const addBtn = document.getElementById("addBtn");
+  const addBtn = document.getElementById("add-btn");
   const modal = document.getElementById("modal");
   const saveBtn = document.getElementById("saveBtn");
   const cancelBtn = document.getElementById("cancelBtn");
@@ -109,6 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 모달 닫기
     modal.classList.add("hidden");
+    document.body.style.overflow = "auto";
 
     // 입력값 초기화
     document

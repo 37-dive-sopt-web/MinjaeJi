@@ -39,6 +39,18 @@ button:hover {
     0 0.125rem 0.3125rem rgba(0, 0, 0, 0.24);
 }
 
+input {
+  padding: 0.625rem;
+  font-size: 0.875rem;
+  box-sizing: border-box;
+  width: 100%;
+  border: 0.0625rem solid rgb(158, 158, 158);
+  border-radius: 0.5rem;
+  outline: none;
+  caret-color: rgb(210, 199, 1);
+}
+/* TODO: h1, h2, h3도 공통으로 지정하기 */
+
 /* 헤더 스타일 */
 header {
   position: fixed;
@@ -72,18 +84,6 @@ header div {
 .filter-section {
   display: grid;
   gap: 1.25rem;
-}
-
-/* 기본 스타일 */
-.filter-section input {
-  padding: 0.625rem;
-  font-size: 0.875rem;
-  box-sizing: border-box;
-  width: 100%;
-  border: 0.0625rem solid rgb(158, 158, 158);
-  border-radius: 0.5rem;
-  outline: none;
-  caret-color: rgb(210, 199, 1);
 }
 
 .triple-row {
@@ -171,7 +171,46 @@ td {
   z-index: 100;
 }
 .modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   background-color: white;
-  padding: 20px;
+  padding: 30px;
   border-radius: 10px;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.modal-header h3 {
+  font-size: 20px;
+  font-weight: 500;
+  cursor: default;
+}
+
+.modal-header img {
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.modal-header img:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+}
+
+.input-row {
+  display: flex;
+  gap: 20px; /* 칸 사이 여백 */
+  margin-top: 10px;
+}
+
+.input-row div {
+  flex: 1;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
 }
