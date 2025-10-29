@@ -3,11 +3,24 @@ import { getMembersData, setMembersData } from "./storage.js";
 export function handleDeleteMember(renderResultTable) {
   const deleteBtn = document.getElementById("deleteBtn");
   const selectAll = document.getElementById("selectAll");
+  const memberCheckBoxes = document.querySelectorAll(
+    '#membersTable tbody input[type="checkbox"]'
+  );
 
+  // 전체 선택/해제
   selectAll.addEventListener("change", (e) => {
-    document
-      .querySelectorAll('#membersTable tbody input[type="checkbox"]')
-      .forEach((checkbox) => (checkbox.checked = e.target.checked));
+    memberCheckBoxes.forEach(
+      (checkbox) => (checkbox.checked = e.target.checked)
+    );
+  });
+
+  // 개별 선택/해제 추적 -> 전체 선택 값에 반영
+  memberCheckBoxes.forEach((checkbox) => {
+    checkbox.addEventListener("change", () => {
+      selectAll.checked = Array.from(memberCheckBoxes).every(
+        (checkbox) => checkbox.checked
+      );
+    });
   });
 
   deleteBtn.addEventListener("click", () => {
