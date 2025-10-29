@@ -67,6 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderResultTable(membersData);
   });
 
+  // 모달 기능
   const addBtn = document.getElementById("add-btn");
   const modal = document.getElementById("modal");
   const saveBtn = document.getElementById("saveBtn");
@@ -82,6 +83,22 @@ document.addEventListener("DOMContentLoaded", () => {
   cancelBtn.addEventListener("click", () => {
     modal.classList.add("hidden");
     document.body.style.overflow = "auto";
+
+    document
+      .querySelectorAll("#modal input")
+      .forEach((input) => (input.value = ""));
+  });
+
+  // 모달 외부 클릭 시 닫기
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.add("hidden");
+      document.body.style.overflow = "auto";
+      // 모달 입력값 초기화
+      document
+        .querySelectorAll("#modal input")
+        .forEach((input) => (input.value = ""));
+    }
   });
 
   // 저장 버튼 클릭 시
@@ -109,11 +126,58 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 모달 닫기
     modal.classList.add("hidden");
-    document.body.style.overflow = "auto";
+    document.body.style.overflow = "auto"; // 모달 닫은 뒤 스크롤 복원
 
-    // 입력값 초기화
+    // 모달 입력값 초기화
     document
       .querySelectorAll("#modal input")
       .forEach((input) => (input.value = ""));
+  });
+
+  // 삭제 기능
+
+  const deleteBtn = document.getElementById("delete-btn");
+  const selectAllCheckbox = document.getElementById("select-all");
+
+  selectAllCheckbox.addEventListener("change", (e) => {
+    const checkboxes = document.querySelectorAll(
+      '#members-table tbody input[type="checkbox"]'
+    );
+    checkboxes.forEach((cb) => (cb.checked = e.target.checked));
+  });
+
+  deleteBtn.addEventListener("click", () => {
+    const membersData = JSON.parse(localStorage.getItem("membersData")) || [];
+    const selectedCheckboxes = document.querySelectorAll(
+      '#members-table tbody input[type="checkbox"]:checked'
+    );
+
+    if (selectedCheckboxes.length === 0) {
+      alert("삭제할 멤버를 선택하세요!");
+      return;
+    }
+
+    // 삭제 확인
+    const isConfirmed = confirm("멤버를 정말 삭제하시겠습니까?");
+
+    if (!isConfirmed) {
+      // 취소 시 체크 해제
+      selectedCheckboxes.forEach((cb) => (cb.checked = false));
+      // 전체 선택 체크박스도 해제
+      selectAllCheckbox.checked = false;
+      return;
+    }
+
+    // 삭제 처리
+    const selectedIds = Array.from(selectedCheckboxes).map(
+      (cb) => cb.dataset.id
+    );
+    const filteredData = membersData.filter(
+      (member) => !selectedIds.includes(String(member.id))
+    );
+
+    localStorage.setItem("membersData", JSON.stringify(filteredData));
+    renderResultTable(filteredData);
+    selectAllCheckbox.checked = false;
   });
 });
