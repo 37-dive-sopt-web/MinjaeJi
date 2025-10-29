@@ -7,14 +7,14 @@
 .triple-row-input {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0.625rem;
+  gap: 1.25rem;
 }
 
 .triple-row-input select {
   padding: 0.625rem;
   font-size: 0.875rem;
   width: 100%;
-  border: 0.0625rem solid rgb(158, 158, 158);
+  border: 1px solid rgb(158, 158, 158);
   border-radius: 0.5rem;
   outline: none;
   cursor: pointer;
@@ -22,17 +22,17 @@
 
 .triple-row-input select:focus {
   border-color: rgb(243, 241, 202);
-  box-shadow: 0 0 0.3125rem rgb(243, 241, 202);
+  box-shadow: 0 0 5px rgb(243, 241, 202);
 }
 
-.half-row-input {
+.twice-row-input {
   display: flex;
+  flex: 1;
   justify-content: space-between;
-  gap: 0.625rem;
+  gap: 1.25rem;
 }
 
-.half-row-input input,
-.half-row-input button {
-  width: 50%;
+.filter-section button {
+  flex: 1;
   font-size: 0.9375rem;
 }

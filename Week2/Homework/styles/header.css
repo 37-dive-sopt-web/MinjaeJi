@@ -4,22 +4,17 @@ header {
   top: 0;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr; /* 정확히 3등분 되기 위함 */
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   padding: 1.875rem 2.5rem;
   background-color: rgb(243, 241, 202);
   z-index: 50;
+  cursor: default;
 }
 
 header span {
   justify-self: start;
   font-size: 2rem;
-}
-
-header h1 {
-  justify-self: center;
-  font-size: 20.8px;
-  font-weight: 600;
 }
 
 header div {
