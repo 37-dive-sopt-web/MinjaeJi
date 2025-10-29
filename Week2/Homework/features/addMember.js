@@ -35,10 +35,40 @@ export function handleAddMember(renderResultTable) {
       englishName: document.getElementById("newMemberEnglishName").value,
       github: document.getElementById("newMemberGithub").value,
       gender: document.getElementById("newMemberGender").value,
-      gender: document.getElementById("newMemberRole").value,
-      codeReviewGroup: Number(document.getElementById("newMemberGroup").value),
-      age: Number(document.getElementById("newMemberAge").value),
+      role: document.getElementById("newMemberRole").value,
+      codeReviewGroup: document.getElementById("newMemberGroup").value,
+      age: document.getElementById("newMemberAge").value,
     };
+
+    const values = Object.values(newMember);
+    if (values.some((value) => value === "")) {
+      alert("모든 필드를 입력해 주세요.");
+      return;
+    }
+
+    if (!/^[A-Za-z]+$/.test(newMember.englishName)) {
+      alert("영문 이름은 영어 알파벳만 입력 가능합니다.");
+      return;
+    }
+
+    if (!/^[A-Za-z]+$/.test(newMember.github)) {
+      alert("깃허브 아이디는 영어 알파벳만 입력 가능합니다.");
+      return;
+    }
+
+    const group = Number(newMember.codeReviewGroup);
+    if (!Number.isInteger(group) || group < 1 || group > 9) {
+      alert("금잔디 조는 1부터 9 사이의 정수만 입력 가능합니다.");
+      return;
+    }
+    newMember.codeReviewGroup = group;
+
+    const age = Number(newMember.age);
+    if (!Number.isInteger(age) || age <= 0) {
+      alert("나이는 0보다 큰 정수만 입력 가능합니다.");
+      return;
+    }
+    newMember.age = age;
 
     membersData.push(newMember);
     setMembersData(membersData);
