@@ -6,7 +6,11 @@
     <title>웹계인 관리 페이지</title>
     <link rel="icon" href="./images/admin-favicon.png" type="icon" />
     <link rel="stylesheet" href="./styles/reset.css" />
-    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/common.css" />
+    <link rel="stylesheet" href="./styles/header.css" />
+    <link rel="stylesheet" href="./styles/searchFilter.css" />
+    <link rel="stylesheet" href="./styles/memberList.css" />
+    <link rel="stylesheet" href="./styles/modal.css" />
     <script src="./membersData.js"></script>
     <script type="module" src="./features/main.js"></script>
   </head>
@@ -110,7 +114,7 @@
           <div class="input-group">
             <label>깃허브</label>
             <input
-              id="newMemberGithubId"
+              id="newMemberGithub"
               type="text"
               placeholder="깃허브 아이디를 입력하세요."
             />
@@ -137,7 +141,7 @@
 
           <div class="input-row">
             <div class="input-group">
-              <label>금잔디조</label>
+              <label>금잔디 조</label>
               <input
                 id="newMemberGroup"
                 type="number"

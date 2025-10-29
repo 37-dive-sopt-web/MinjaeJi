@@ -1,0 +1,34 @@
+/* 리스트 섹션 스타일 */
+.list-section .list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-header .button-group {
+  display: flex;
+  gap: 0.625rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  margin-top: 1.25rem;
+  box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.12),
+    0 0.0625rem 0.125rem rgba(0, 0, 0, 0.24);
+}
+
+th {
+  padding: 0.9375rem;
+  background-color: rgb(243, 241, 202);
+  text-align: center;
+  cursor: default;
+}
+
+td {
+  padding: 0.9375rem;
+  text-align: center;
+  cursor: default;
+}
