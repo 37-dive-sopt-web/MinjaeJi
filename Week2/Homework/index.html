@@ -23,7 +23,7 @@
 
         <input type="text" placeholder="영문 이름을 입력하세요." />
 
-        <div class="triple-row">
+        <div class="triple-row-input">
           <input type="text" placeholder="깃허브 아이디를 입력하세요." />
 
           <select>
@@ -40,14 +40,14 @@
           </select>
         </div>
 
-        <div class="half-row">
+        <div class="half-row-input">
           <input type="text" placeholder="금잔디 조를 입력하세요. (1~9)" />
           <input type="text" placeholder="나이를 입력하세요." />
         </div>
 
-        <div class="half-row">
-          <button type="button" id="search-btn">적용</button>
-          <button type="button" id="reset-btn">초기화</button>
+        <div class="half-row-input">
+          <button type="button" id="searchBtn">적용</button>
+          <button type="button" id="resetBtn">초기화</button>
         </div>
       </section>
 
@@ -55,15 +55,15 @@
         <div class="list-header">
           <h2>37기 웹 파트 목록</h2>
           <div class="button-group">
-            <button id="delete-btn">선택 삭제</button>
-            <button id="add-btn">추가</button>
+            <button id="deleteBtn">선택 삭제</button>
+            <button id="addBtn">추가</button>
           </div>
         </div>
 
-        <table id="members-table">
+        <table id="membersTable">
           <thead>
             <tr>
-              <th><input type="checkbox" id="select-all" /></th>
+              <th><input type="checkbox" id="selectAll" /></th>
               <th>이름</th>
               <th>영문 이름</th>
               <th>GitHub</th>
@@ -86,13 +86,14 @@
               src="./images/x-icon.png"
               width="16"
               height="16"
+              alt="모달 닫기 버튼"
             />
           </div>
 
           <div class="input-group">
             <label>이름</label>
             <input
-              id="modalName"
+              id="newMemberName"
               type="text"
               placeholder="이름을 입력하세요."
             />
@@ -100,7 +101,7 @@
           <div class="input-group">
             <label>영문 이름</label>
             <input
-              id="modalEnglishName"
+              id="newMemberEnglishName"
               type="text"
               placeholder="영문 이름을 입력하세요."
             />
@@ -109,7 +110,7 @@
           <div class="input-group">
             <label>깃허브</label>
             <input
-              id="modalGithub"
+              id="newMemberGithubId"
               type="text"
               placeholder="깃허브 아이디를 입력하세요."
             />
@@ -119,7 +120,7 @@
             <div class="input-group">
               <label>성별</label>
               <input
-                id="modalGender"
+                id="newMemberGender"
                 type="text"
                 placeholder="성별을 입력하세요."
               />
@@ -127,7 +128,7 @@
             <div class="input-group">
               <label>역할</label>
               <input
-                id="modalRole"
+                id="newMemberRole"
                 type="text"
                 placeholder="역할을 입력하세요."
               />
@@ -138,7 +139,7 @@
             <div class="input-group">
               <label>금잔디조</label>
               <input
-                id="modalGroup"
+                id="newMemberGroup"
                 type="number"
                 placeholder="금잔디 조를 입력하세요."
               />
@@ -146,7 +147,7 @@
             <div class="input-group">
               <label>나이</label>
               <input
-                id="modalAge"
+                id="newMemberAge"
                 type="number"
                 placeholder="나이를 입력하세요."
               />

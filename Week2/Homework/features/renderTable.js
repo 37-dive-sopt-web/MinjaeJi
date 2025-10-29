@@ -1,5 +1,5 @@
 export function renderResultTable(membersData) {
-  const tableBody = document.querySelector("#members-table tbody");
+  const tableBody = document.querySelector("#membersTable tbody");
   tableBody.innerHTML = "";
 
   if (membersData.length === 0) {

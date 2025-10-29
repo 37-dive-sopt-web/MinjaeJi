@@ -86,13 +86,13 @@ header div {
   gap: 1.25rem;
 }
 
-.triple-row {
+.triple-row-input {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.625rem;
 }
 
-.triple-row select {
+.triple-row-input select {
   padding: 0.625rem;
   font-size: 0.875rem;
   width: 100%;
@@ -102,19 +102,19 @@ header div {
   cursor: pointer;
 }
 
-.triple-row select:focus {
+.triple-row-input select:focus {
   border-color: rgb(243, 241, 202);
   box-shadow: 0 0 0.3125rem rgb(243, 241, 202);
 }
 
-.half-row {
+.half-row-input {
   display: flex;
   justify-content: space-between;
   gap: 0.625rem;
 }
 
-.half-row input,
-.half-row button {
+.half-row-input input,
+.half-row-input button {
   width: 50%;
   font-size: 0.9375rem;
 }

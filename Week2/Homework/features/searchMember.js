@@ -4,8 +4,8 @@ export function handleSearchMember(renderResultTable) {
   const searchInputs = document.querySelectorAll(
     ".filter-section input, .filter-section select"
   );
-  const searchBtn = document.getElementById("search-btn");
-  const resetBtn = document.getElementById("reset-btn");
+  const searchBtn = document.getElementById("searchBtn");
+  const resetBtn = document.getElementById("resetBtn");
 
   searchBtn.addEventListener("click", () => {
     const [name, eng, github, gender, role, group, age] = searchInputs;
