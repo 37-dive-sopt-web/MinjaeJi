@@ -8,23 +8,33 @@ export function handleSearchMember(renderResultTable) {
   const resetBtn = document.getElementById("resetBtn");
 
   searchBtn.addEventListener("click", () => {
-    const [name, eng, github, gender, role, group, age] = searchInputs;
+    const [
+      nameInput,
+      englishNameInput,
+      githubInput,
+      genderSelect,
+      roleSelect,
+      codeReviewGroupInput,
+      ageInput,
+    ] = searchInputs;
     const membersData = getMembersData();
 
-    const filtered = membersData.filter((member) => {
+    const filteredMembersData = membersData.filter((member) => {
       return (
-        (name.value === "" || member.name.includes(name.value)) &&
-        (eng.value === "" || member.englishName.includes(eng.value)) &&
-        (github.value === "" || member.github.includes(github.value)) &&
-        (gender.value === "" || member.gender === gender.value) &&
-        (role.value === "" || member.role === role.value) &&
-        (group.value === "" ||
-          member.codeReviewGroup === Number(group.value)) &&
-        (age.value === "" || member.age === Number(age.value))
+        (nameInput.value === "" || member.name.includes(nameInput.value)) &&
+        (englishNameInput.value === "" ||
+          member.englishName.includes(englishNameInput.value)) &&
+        (githubInput.value === "" ||
+          member.github.includes(githubInput.value)) &&
+        (genderSelect.value === "" || member.gender === genderSelect.value) &&
+        (roleSelect.value === "" || member.role === roleSelect.value) &&
+        (codeReviewGroupInput.value === "" ||
+          member.codeReviewGroup === Number(codeReviewGroupInput.value)) &&
+        (ageInput.value === "" || member.age === Number(ageInput.value))
       );
     });
 
-    renderResultTable(filtered);
+    renderResultTable(filteredMembersData);
   });
 
   resetBtn.addEventListener("click", () => {
