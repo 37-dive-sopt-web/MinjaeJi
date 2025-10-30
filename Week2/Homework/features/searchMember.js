@@ -70,6 +70,9 @@ export function handleSearchMember(renderResultTable) {
 
     document.querySelectorAll(".dropdown-selected").forEach((selectedItem) => {
       selectedItem.dataset.value = "";
+      selectedItem.textContent = selectedItem.classList.contains("gender")
+        ? "성별"
+        : "역할";
     });
 
     renderResultTable(getMembersData());
