@@ -1,0 +1,88 @@
+/* 검색 필터 스타일 */
+.filter-section {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.triple-row-input {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+.custom-dropdown {
+  position: relative;
+  width: 100%;
+  font-size: 0.875rem;
+}
+
+.dropdown-selected {
+  padding: 0.625rem 0.75rem;
+  border: 1px solid rgb(158, 158, 158);
+  border-radius: 0.5rem;
+  background-color: #fff;
+  cursor: pointer;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dropdown-selected:hover {
+  border-color: rgb(120, 120, 120);
+}
+
+.dropdown-selected::after {
+  content: "▼";
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.75rem;
+  color: #777;
+}
+
+.dropdown-list {
+  position: absolute;
+  top: calc(100% + 0.25rem);
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 0.5rem;
+  box-shadow: var(--box-shadow-color);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  z-index: 10;
+}
+
+.dropdown-list li {
+  padding: 0.625rem 0.75rem;
+  cursor: pointer;
+}
+
+.dropdown-list li:first-child {
+  border-radius: 0.4375rem 0.4375rem 0 0;
+}
+
+.dropdown-list li:last-child {
+  border-radius: 0 0 0.4375rem 0.4375rem;
+}
+
+.dropdown-list li:hover {
+  font-weight: 600;
+  background-color: var(--primary-color);
+}
+
+.hidden {
+  display: none;
+}
+
+.twice-row-input {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.filter-section button {
+  flex: 1;
+  font-size: 0.9375rem;
+}

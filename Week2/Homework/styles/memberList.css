@@ -1,0 +1,32 @@
+/* 리스트 섹션 스타일 */
+.list-section .list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  margin-top: 1.25rem;
+  box-shadow: var(--box-shadow-color);
+}
+
+th {
+  padding: 0.9375rem;
+  background-color: var(--primary-color);
+  text-align: center;
+  cursor: default;
+}
+
+td {
+  padding: 0.9375rem;
+  text-align: center;
+  cursor: default;
+}
+
+[type="checkbox"] {
+  cursor: pointer;
+}
