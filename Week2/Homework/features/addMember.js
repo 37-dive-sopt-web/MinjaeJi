@@ -22,13 +22,12 @@ export function handleAddMember(renderResultTable) {
     if (e.target === modal) handleCloseModal();
   });
 
-  const membersData = getMembersData();
-  const maxMemberId =
-    membersData.length > 0
-      ? Math.max(...membersData.map((member) => member.id))
-      : 0;
-
   saveBtn.addEventListener("click", () => {
+    const membersData = getMembersData();
+    const maxMemberId =
+      membersData.length > 0
+        ? Math.max(...membersData.map((member) => member.id))
+        : 0;
     const newMember = {
       id: maxMemberId + 1,
       name: document.getElementById("newMemberName").value,
