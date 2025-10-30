@@ -1,9 +1,10 @@
 import { getMembersData } from "./storage.js";
 
 export function handleSearchMember(renderResultTable) {
-  const searchInputs = document.querySelectorAll(
-    ".filter-section input, .filter-section select"
-  );
+  const searchInputs = document.querySelectorAll(".filter-section input");
+  const genderDropdown = document.querySelector(".custom-dropdown.gender");
+  const roleDropdown = document.querySelector(".custom-dropdown.role");
+
   const searchBtn = document.getElementById("searchBtn");
   const resetBtn = document.getElementById("resetBtn");
 
@@ -12,8 +13,6 @@ export function handleSearchMember(renderResultTable) {
       nameInput,
       englishNameInput,
       githubInput,
-      genderSelect,
-      roleSelect,
       codeReviewGroupInput,
       ageInput,
     ] = searchInputs;
@@ -43,6 +42,11 @@ export function handleSearchMember(renderResultTable) {
         return;
       }
     }
+    const genderValue =
+      genderDropdown.querySelector(".dropdown-selected").dataset.value || "";
+    const roleValue =
+      roleDropdown.querySelector(".dropdown-selected").dataset.value || "";
+
     const filteredMembersData = membersData.filter((member) => {
       return (
         (nameInput.value === "" || member.name.includes(nameInput.value)) &&
@@ -50,8 +54,8 @@ export function handleSearchMember(renderResultTable) {
           member.englishName.includes(englishNameInput.value)) &&
         (githubInput.value === "" ||
           member.github.includes(githubInput.value)) &&
-        (genderSelect.value === "" || member.gender === genderSelect.value) &&
-        (roleSelect.value === "" || member.role === roleSelect.value) &&
+        (genderValue === "" || member.gender === genderValue) &&
+        (roleValue === "" || member.role === roleValue) &&
         (codeReviewGroupInput.value === "" ||
           member.codeReviewGroup === Number(codeReviewGroupInput.value)) &&
         (ageInput.value === "" || member.age === Number(ageInput.value))
@@ -63,6 +67,11 @@ export function handleSearchMember(renderResultTable) {
 
   resetBtn.addEventListener("click", () => {
     searchInputs.forEach((input) => (input.value = ""));
+
+    document.querySelectorAll(".dropdown-selected").forEach((selectedItem) => {
+      selectedItem.dataset.value = "";
+    });
+
     renderResultTable(getMembersData());
   });
 }

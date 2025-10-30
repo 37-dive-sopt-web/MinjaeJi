@@ -30,18 +30,22 @@
         <div class="triple-row-input">
           <input type="text" placeholder="깃허브 아이디를 입력하세요." />
 
-          <select>
-            <option value="">성별</option>
-            <option value="male">male</option>
-            <option value="female">female</option>
-            <option value="alien">alien</option>
-          </select>
+          <div class="custom-dropdown gender">
+            <div class="dropdown-selected">성별</div>
+            <ul class="dropdown-list hidden">
+              <li data-value="male">male</li>
+              <li data-value="female">female</li>
+              <li data-value="alien">alien</li>
+            </ul>
+          </div>
 
-          <select>
-            <option value="">역할</option>
-            <option value="YB">YB</option>
-            <option value="OB">OB</option>
-          </select>
+          <div class="custom-dropdown role">
+            <div class="dropdown-selected">역할</div>
+            <ul class="dropdown-list hidden">
+              <li data-value="YB">YB</li>
+              <li data-value="OB">OB</li>
+            </ul>
+          </div>
         </div>
 
         <div class="twice-row-input">

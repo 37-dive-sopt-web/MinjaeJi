@@ -3,6 +3,7 @@ import { renderResultTable } from "./renderTable.js";
 import { handleSearchMember } from "./searchMember.js";
 import { handleAddMember } from "./addMember.js";
 import { handleDeleteMember } from "./deleteMember.js";
+import { handleCustomDropDown } from "./customDropDown.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const membersData = getMembersData();
@@ -11,4 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
   handleSearchMember(renderResultTable);
   handleAddMember(renderResultTable);
   handleDeleteMember(renderResultTable);
+
+  handleCustomDropDown();
 });
