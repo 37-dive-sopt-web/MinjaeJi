@@ -7,7 +7,7 @@ header {
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   padding: 1.875rem 2.5rem;
-  background-color: rgb(243, 241, 202);
+  background-color: var(--primary-color);
   z-index: 50;
   cursor: default;
 }
