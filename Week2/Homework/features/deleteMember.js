@@ -3,24 +3,23 @@ import { getMembersData, setMembersData } from "./storage.js";
 export function handleDeleteMember(renderResultTable) {
   const deleteBtn = document.getElementById("deleteBtn");
   const selectAll = document.getElementById("selectAll");
-  const memberCheckBoxes = document.querySelectorAll(
-    '#membersTable tbody input[type="checkbox"]'
-  );
+  const tbody = document.querySelector("#membersTable tbody");
 
   // 전체 선택/해제
   selectAll.addEventListener("change", (e) => {
-    memberCheckBoxes.forEach(
-      (checkbox) => (checkbox.checked = e.target.checked)
-    );
+    tbody
+      .querySelectorAll('input[type="checkbox"]')
+      .forEach((checkbox) => (checkbox.checked = e.target.checked));
   });
 
-  // 개별 선택/해제 추적 -> 전체 선택 값에 반영
-  memberCheckBoxes.forEach((checkbox) => {
-    checkbox.addEventListener("change", () => {
+  // 개별 체크박스 클릭 추적 (이벤트 위임)
+  tbody.addEventListener("change", (e) => {
+    if (e.target.matches('input[type="checkbox"]')) {
+      const memberCheckBoxes = tbody.querySelectorAll('input[type="checkbox"]');
       selectAll.checked = Array.from(memberCheckBoxes).every(
         (checkbox) => checkbox.checked
       );
-    });
+    }
   });
 
   deleteBtn.addEventListener("click", () => {
