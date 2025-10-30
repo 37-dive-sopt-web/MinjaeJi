@@ -23,6 +23,11 @@ export function handleSearchMember(renderResultTable) {
       return;
     }
 
+    if (githubInput.value && !/^[A-Za-z]+$/.test(githubInput.value)) {
+      alert("깃허브 아이디는 영어만 입력할 수 있습니다.");
+      return;
+    }
+
     if (codeReviewGroupInput.value) {
       const codeReviewGroup = Number(codeReviewGroupInput.value);
       if (
