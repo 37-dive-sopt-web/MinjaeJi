@@ -33,3 +33,9 @@ export const button = style({
     },
   },
 });
+
+export const activeButton = style({
+  fontWeight: "600",
+  color: "white",
+  backgroundColor: "#a95e6eff",
+});
