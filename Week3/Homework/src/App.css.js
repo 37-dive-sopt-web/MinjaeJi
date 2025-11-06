@@ -5,6 +5,5 @@ export const container = style({
   backgroundColor: "#fff8ffff",
   display: "flex",
   flexDirection: "column",
-
   padding: "20px 100px",
 });
