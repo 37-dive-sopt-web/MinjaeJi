@@ -40,7 +40,6 @@ export const gameBoardButton = style({
 // GameBoard의 카드 스타일
 export const cardContainer = style({
   display: "grid",
-  gridTemplateColumns: "repeat(4, 100px)",
   gap: "10px",
   justifyContent: "center",
 });

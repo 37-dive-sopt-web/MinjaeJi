@@ -6,6 +6,13 @@ export const card = style({
   height: "100px",
   perspective: "1000px",
   cursor: "pointer",
+  borderRadius: "10px",
+  transition: "transform 0.4s ease",
+  selectors: {
+    "&:hover": {
+      transform: "scale(1.05)",
+    },
+  },
 });
 
 export const cardInner = style({
