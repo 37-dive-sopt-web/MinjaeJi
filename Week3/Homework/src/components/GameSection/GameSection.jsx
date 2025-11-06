@@ -101,7 +101,7 @@ export default function GameSection() {
     if (matched.length && matched.length === deck.length) {
       clearInterval(timerRef.current);
       setIsGameOver(true);
-      alert("🎉 모든 카드를 맞췄어요!");
+      alert("모든 카드를 맞췄어요!");
     }
   }, [matched]);
 

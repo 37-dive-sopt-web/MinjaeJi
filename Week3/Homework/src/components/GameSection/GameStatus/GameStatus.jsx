@@ -1,4 +1,5 @@
 import * as styles from "./GameStatus.css";
+import { LevelSelect } from "./LevelSelect";
 
 export default function GameStatus({
   level,
@@ -14,20 +15,7 @@ export default function GameStatus({
 
   return (
     <section className={styles.gameStatusSection}>
-      <div>
-        <label>
-          난이도:{" "}
-          <select
-            value={level}
-            onChange={(e) => setLevel(Number(e.target.value))}
-          >
-            <option value={1}>Level 1 (쉬움)</option>
-            <option value={2}>Level 2 (보통)</option>
-            <option value={3}>Level 3 (어려움)</option>
-          </select>
-        </label>
-      </div>
-
+      <LevelSelect value={level} onChange={setLevel} />
       <div>
         <div>남은 시간: {timeLeft.toFixed(2)}초 </div>
         <div>성공한 짝: {matchedPairs}</div>
