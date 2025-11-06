@@ -23,7 +23,6 @@ export default function GameStatus({
     <section className={styles.gameStatusSection}>
       <LevelSelect value={level} onChange={setLevel} />
 
-      {/* 상태 표시 */}
       <div className={styles.pairStat}>
         {pairStats.map((item) => (
           <div key={item.label} className={styles.pairContainer}>
@@ -33,11 +32,9 @@ export default function GameStatus({
         ))}
       </div>
 
-      {/* 안내 메시지 */}
       <p className={styles.infoTitle}>안내 메시지</p>
       <div className={styles.infoContent}>{message}</div>
 
-      {/* 히스토리 */}
       <p className={styles.infoTitle}>최근 히스토리</p>
       <div className={styles.historyContainer}>
         {history.length === 0 ? (
