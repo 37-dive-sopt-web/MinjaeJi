@@ -26,7 +26,7 @@ export const button = style({
   cursor: "pointer",
   fontSize: "15px",
   fontWeight: "500",
-  transition: "transform 0.2s ease, box-shadow 0.2s ease",
+  transition: "transform 0.2s ease, boxShadow 0.2s ease",
   selectors: {
     "&:hover": {
       transform: "scale(1.05)",
