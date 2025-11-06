@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { buildDeck } from "../../utils/random-deck";
 import { useGameTimer } from "../../hooks/useGameTimer";
 
+import GameResultModal from "../GameResultModal/GameResultModal";
+
 const TIME_LIMITS = {
   1: 45,
   2: 60,
@@ -24,13 +26,13 @@ export default function GameSection() {
     TIME_LIMITS[level],
     () => {
       setMessage("시간 초과! 게임 종료!");
-      alert("시간 초과! 게임 종료!");
     }
   );
 
   const isLocked = flipped.length === 2;
   const isGameWon = matched.length > 0 && matched.length === deck.length;
-  const isGameOver = timeLeft === 0 || isGameWon;
+  const isTimeOver = timeLeft === 0;
+  const isGameOver = isTimeOver || isGameWon;
 
   useEffect(() => {
     handleResetGame();
@@ -112,12 +114,11 @@ export default function GameSection() {
     if (isGameWon) {
       stopTimer();
       setMessage("모든 카드를 맞췄어요!");
-      alert("모든 카드를 맞췄어요!");
 
       // 클리어 기록 저장
       const clearTime = (TIME_LIMITS[level] - timeLeft).toFixed(2); // 클리어 시간 (소수점 둘째 자리)
       const record = {
-        time: clearTime,
+        time: Number(clearTime),
         level,
         date: new Date().toLocaleString(), // 현재 시각
       };
@@ -125,9 +126,14 @@ export default function GameSection() {
       const existingRecords =
         JSON.parse(localStorage.getItem("gameRecords")) || [];
 
-      const updatedRecords = [...existingRecords, record].sort(
-        (a, b) => a.time - b.time // 빠른 시간 순 정렬
-      );
+      const updatedRecords = [...existingRecords, record].sort((a, b) => {
+        // 레벨 내림차순 정렬 (높은 레벨이 위로)
+        if (a.level !== b.level) {
+          return b.level - a.level;
+        }
+        // 같은 레벨이면 클리어 시간 오름차순 (빠른 순)
+        return a.time - b.time;
+      });
 
       localStorage.setItem("gameRecords", JSON.stringify(updatedRecords));
     }
@@ -153,6 +159,18 @@ export default function GameSection() {
         message={message}
         history={history}
       />
+      {isGameWon && (
+        <GameResultModal
+          mode="success"
+          level={level}
+          clearTime={TIME_LIMITS[level] - timeLeft}
+          onRestart={handleResetGame}
+        />
+      )}
+
+      {isTimeOver && !isGameWon && (
+        <GameResultModal mode="fail" onRestart={handleResetGame} />
+      )}
     </main>
   );
 }
