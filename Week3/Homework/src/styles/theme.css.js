@@ -8,7 +8,8 @@ export const vars = createGlobalTheme(":root", {
     primary: "#6e3d48ff",
     secondary: "#a95e6eff",
     card: "#e699aaff",
-    negative: "#a81b3aff",
+    status: "#ecb9c4ff",
+    negative: "#cf2449ff",
   },
   font: {
     base: "Pretendard, sans-serif",
