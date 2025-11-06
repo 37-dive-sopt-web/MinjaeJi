@@ -32,7 +32,7 @@ export default function RankingSection() {
                 <th className={styles.th}>순위</th>
                 <th className={styles.th}>레벨</th>
                 <th className={styles.th}>클리어 시간 (초)</th>
-                <th className={styles.th}>날짜</th>
+                <th className={styles.th}>기록 시각</th>
               </tr>
             </thead>
             <tbody>

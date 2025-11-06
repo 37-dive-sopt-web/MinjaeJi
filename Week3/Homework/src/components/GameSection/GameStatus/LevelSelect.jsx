@@ -1,6 +1,5 @@
 import { useState } from "react";
 import * as styles from "./LevelSelect.css";
-import DropDownIcon from "../../../assets/down.png";
 
 const levels = [
   { value: 1, label: "Level 1" },
@@ -17,7 +16,8 @@ export function LevelSelect({ value, onChange }) {
       <div className={styles.selected} onClick={() => setOpen((o) => !o)}>
         <span>{selected?.label ?? "레벨 선택"}</span>
         <img
-          src={DropDownIcon}
+          src="/assets/down.png"
+          alt="dropdown"
           className={open ? styles.chevronOpen : styles.chevron}
           width={16}
           height={16}
