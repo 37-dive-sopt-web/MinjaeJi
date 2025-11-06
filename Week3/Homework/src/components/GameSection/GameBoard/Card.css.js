@@ -14,6 +14,10 @@ export const card = style({
     },
   },
 });
+export const matched = style({
+  boxShadow: "0 0 4px 4px rgba(245, 150, 206, 0.6)",
+  transition: "boxShadow 0.3s ease-in-out",
+});
 
 export const cardInner = style({
   position: "relative",

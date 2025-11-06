@@ -30,6 +30,7 @@ export default function GameBoard({
             key={card.id}
             card={card}
             isFlipped={flipped.includes(card.id) || matched.includes(card.id)}
+            isMatched={matched.includes(card.id)}
             onClick={onCardClick}
           />
         ))}

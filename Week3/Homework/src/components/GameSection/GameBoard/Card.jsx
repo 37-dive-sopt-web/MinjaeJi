@@ -1,8 +1,11 @@
 import * as styles from "./Card.css.js";
 
-export default function Card({ card, isFlipped, onClick }) {
+export default function Card({ card, isFlipped, isMatched, onClick }) {
   return (
-    <div className={styles.card} onClick={() => onClick(card)}>
+    <div
+      className={`${styles.card} ${isMatched ? styles.matched : ""}`}
+      onClick={() => onClick(card)}
+    >
       <div className={`${styles.cardInner} ${isFlipped ? "flipped" : ""}`}>
         <div className={styles.front}>{card.value}</div>
         <div className={styles.back}>?</div>
