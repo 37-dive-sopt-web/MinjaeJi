@@ -1,36 +1,64 @@
 import * as styles from "./GameStatus.css";
 import { LevelSelect } from "./LevelSelect";
-
 export default function GameStatus({
   level,
   setLevel,
-  flipped,
   matched,
   totalCards,
   timeLeft,
+  message,
+  history,
 }) {
   const totalPairs = totalCards / 2;
   const matchedPairs = matched.length / 2;
   const remainingPairs = totalPairs - matchedPairs;
 
+  const pairStats = [
+    { label: "남은 시간", value: timeLeft.toFixed(2) },
+    { label: "성공한 짝", value: matchedPairs },
+    { label: "남은 짝", value: remainingPairs },
+  ];
+
   return (
     <section className={styles.gameStatusSection}>
       <LevelSelect value={level} onChange={setLevel} />
-      <div>
-        <div>남은 시간: {timeLeft.toFixed(2)}초 </div>
-        <div>성공한 짝: {matchedPairs}</div>
-        <div>남은 짝: {remainingPairs}</div>
+
+      {/* 상태 표시 */}
+      <div className={styles.pairStat}>
+        {pairStats.map((item) => (
+          <div key={item.label} className={styles.pairContainer}>
+            <span className={styles.title}>{item.label}</span>
+            <span className={styles.content}>{item.value}</span>
+          </div>
+        ))}
       </div>
 
-      <p>
-        {remainingPairs === 0
-          ? "모든 카드를 맞췄어요!"
-          : "카드를 모두 맞춰보세요!"}
-      </p>
+      {/* 안내 메시지 */}
+      <p className={styles.infoTitle}>안내 메시지</p>
+      <div className={styles.infoContent}>{message}</div>
 
-      <div>{flipped.length === 2 && <p>결과 확인 중...</p>}</div>
-
-      <p>최근 히스토리</p>
+      {/* 히스토리 */}
+      <p className={styles.infoTitle}>최근 히스토리</p>
+      <div className={styles.historyContainer}>
+        {history.length === 0 ? (
+          <div className={styles.infoContent}>아직 뒤집은 카드가 없어요.</div>
+        ) : (
+          history.map((h, i) => (
+            <div key={i} className={styles.infoContent}>
+              <div className={styles.historyPair}>
+                ({h.pair[0]}, {h.pair[1]})
+              </div>
+              <span
+                className={`${styles.historyResult} ${
+                  h.success ? "success" : "fail"
+                }`}
+              >
+                {h.success ? "성공" : "실패"}
+              </span>
+            </div>
+          ))
+        )}
+      </div>
     </section>
   );
 }

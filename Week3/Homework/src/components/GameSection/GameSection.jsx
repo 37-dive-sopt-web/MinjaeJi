@@ -13,12 +13,17 @@ const TIME_LIMITS = {
 export default function GameSection() {
   const [deck, setDeck] = useState([]); // nxn 덱
   const [level, setLevel] = useState(1); // 현재 게임 레벨
-  const [flipped, setFlipped] = useState([]); // 뒤집어진 카드
+  // 위 두 개 합치기 가능?
+
+  const [flipped, setFlipped] = useState([]); // 뒤집어진 카드들
   const [matched, setMatched] = useState([]); // 짝 맞춰진 카드들
   const [isLocked, setIsLocked] = useState(false); // 동시에 뒤집을 수 있는 카드는 2개
-  const [timeLeft, setTimeLeft] = useState(TIME_LIMITS[level]);
-  const [isGameOver, setIsGameOver] = useState(false);
-  const [hasStarted, setHasStarted] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(TIME_LIMITS[level]); // 타이머
+  const [isGameOver, setIsGameOver] = useState(false); // 게임 종료
+  const [hasStarted, setHasStarted] = useState(false); // 게임 시작 시 타이머 가동 -> 이거 불필요한 상태인가?
+
+  const [message, setMessage] = useState("카드를 눌러 게임을 시작하세요!");
+  const [history, setHistory] = useState([]);
 
   const timerRef = useRef(null);
   const startTimeRef = useRef(null);
@@ -28,6 +33,10 @@ export default function GameSection() {
   }, [level]); // level 바뀌거나 리셋 시 새 덱 생성
 
   const handleResetGame = () => {
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
     setDeck(buildDeck(level)); // 기본 4x4
     setFlipped([]);
     setMatched([]);
@@ -35,6 +44,8 @@ export default function GameSection() {
     setIsGameOver(false);
     setHasStarted(false);
     setTimeLeft(TIME_LIMITS[level]);
+    setMessage("카드를 눌러 게임을 시작하세요!");
+    setHistory([]);
   };
 
   const startTimer = () => {
@@ -54,7 +65,7 @@ export default function GameSection() {
       }
 
       setTimeLeft(remaining);
-    }, 50); // 20fps (부드럽고 가볍게)
+    }, 50);
   };
 
   useEffect(() => {
@@ -62,32 +73,52 @@ export default function GameSection() {
   }, []);
 
   const handleCardClick = (card) => {
-    if (isLocked || isGameOver) return; // isLocked true? 이미 두 개 뒤집어져 있음 (안 맞혀 있는 두 개)
-    if (flipped.includes(card.id) || matched.includes(card.id)) return; // 이미 뒤집어진 카드이거나 매치된 거면 return
+    if (isLocked || isGameOver) {
+      setMessage("잠시만 기다려 주세요.");
+      return;
+    }
+    if (flipped.includes(card.id)) {
+      setMessage("이미 선택한 카드예요.");
+      return;
+    }
+    if (matched.includes(card.id)) {
+      setMessage("이미 매치된 카드예요.");
+      return;
+    }
 
     if (!hasStarted) {
       setHasStarted(true);
       startTimer();
+      setMessage("게임이 시작됐어요!");
     }
 
-    // 뒤집어진 카드들 기록
     const newFlipped = [...flipped, card.id];
     setFlipped(newFlipped);
 
-    // 뒤집어진 카드가 두 개라면, 값 비교
     if (newFlipped.length === 2) {
       setIsLocked(true);
-      const [first, second] = newFlipped.map(
-        (id) => deck.find((c) => c.id === id) // deck에서 찾아서 first, second에 각각 할당
+      const [first, second] = newFlipped.map((id) =>
+        deck.find((c) => c.id === id)
       );
 
       if (first.value === second.value) {
         setMatched((prev) => [...prev, first.id, second.id]);
+        setMessage("성공!");
+
+        setHistory((prev) => [
+          { pair: [first.value, second.value], success: true },
+          ...prev,
+        ]);
         setTimeout(() => {
           setFlipped([]);
           setIsLocked(false);
         }, 600);
       } else {
+        setMessage("실패 ㅠ.ㅠ");
+        setHistory((prev) => [
+          { pair: [first.value, second.value], success: false },
+          ...prev,
+        ]);
         setTimeout(() => {
           setFlipped([]);
           setIsLocked(false);
@@ -122,6 +153,8 @@ export default function GameSection() {
         matched={matched}
         totalCards={deck.length}
         timeLeft={timeLeft}
+        message={message}
+        history={history}
       />
     </main>
   );
