@@ -1,4 +1,5 @@
 import { style } from "@vanilla-extract/css";
+import { vars } from "../../styles/theme.css";
 
 export const header = style({
   display: "flex",
@@ -6,8 +7,8 @@ export const header = style({
   alignItems: "center",
   borderRadius: "20px",
   boxShadow: "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)",
-  backgroundColor: "#fee1e8",
-  color: "#6e3d48ff",
+  backgroundColor: vars.color.background,
+  color: vars.color.primary,
   padding: "20px 30px",
   cursor: "default",
 });
@@ -37,5 +38,5 @@ export const button = style({
 export const activeButton = style({
   fontWeight: "600",
   color: "white",
-  backgroundColor: "#a95e6eff",
+  backgroundColor: vars.color.secondary,
 });
