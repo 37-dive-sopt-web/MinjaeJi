@@ -6,4 +6,5 @@ export const container = style({
   display: "flex",
   flexDirection: "column",
   padding: "20px 100px",
+  gap: "20px",
 });
