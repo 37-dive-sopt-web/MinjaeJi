@@ -7,7 +7,7 @@ import GameSection from "./components/GameSection/GameSection.jsx";
 function App() {
   const [activeTab, setActiveTab] = useState("game");
   return (
-    <div className={styles.container}>
+    <div className={styles.appContainer}>
       <Header activeTab={activeTab} setActiveTab={setActiveTab} />
       {activeTab === "game" && <GameSection />}
       {activeTab === "ranking" && "랭킹 섹션 컴포넌트 온다"}

@@ -1,7 +1,5 @@
 import { createGlobalTheme } from "@vanilla-extract/css";
 
-// :root에 css 변수 등록
-// TODO:
 export const vars = createGlobalTheme(":root", {
   color: {
     background: "#fee1e8",

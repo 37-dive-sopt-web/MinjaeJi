@@ -4,7 +4,7 @@ export default function Header({ activeTab, setActiveTab }) {
   return (
     <header className={styles.header}>
       <h1>숫자 카드 짝 맞추기</h1>
-      <div className={styles.buttonGroup}>
+      <div className={styles.buttonContainer}>
         <button
           className={`${styles.button} ${
             activeTab === "game" ? styles.activeButton : ""

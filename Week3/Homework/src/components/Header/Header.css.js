@@ -13,7 +13,7 @@ export const header = style({
   cursor: "default",
 });
 
-export const buttonGroup = style({
+export const buttonContainer = style({
   display: "flex",
   gap: "10px",
 });
