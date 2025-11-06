@@ -23,7 +23,7 @@ export function useGameTimer(limit, onTimeout) {
   const stopTimer = () => clearInterval(timerRef.current);
   const resetTimer = () => setTimeLeft(limit);
 
-  useEffect(() => stop, []);
+  useEffect(() => stopTimer, []);
 
   return { timeLeft, startTimer, stopTimer, resetTimer };
 }
