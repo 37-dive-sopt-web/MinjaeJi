@@ -37,13 +37,14 @@ export default function GameSection() {
   }, [level]);
 
   const handleResetGame = () => {
+    setHasStarted(false);
     stopTimer();
+    resetTimer(TIME_LIMITS[level]);
     setDeck(buildDeck(level));
     setFlipped([]);
     setMatched([]);
     setHistory([]);
     setMessage("카드를 눌러 게임을 시작하세요!");
-    resetTimer(TIME_LIMITS[level]);
   };
 
   const handleCardClick = (card) => {
@@ -112,6 +113,23 @@ export default function GameSection() {
       stopTimer();
       setMessage("모든 카드를 맞췄어요!");
       alert("모든 카드를 맞췄어요!");
+
+      // 클리어 기록 저장
+      const clearTime = (TIME_LIMITS[level] - timeLeft).toFixed(2); // 클리어 시간 (소수점 둘째 자리)
+      const record = {
+        time: clearTime,
+        level,
+        date: new Date().toLocaleString(), // 현재 시각
+      };
+
+      const existingRecords =
+        JSON.parse(localStorage.getItem("gameRecords")) || [];
+
+      const updatedRecords = [...existingRecords, record].sort(
+        (a, b) => a.time - b.time // 빠른 시간 순 정렬
+      );
+
+      localStorage.setItem("gameRecords", JSON.stringify(updatedRecords));
     }
   }, [isGameWon, stopTimer]);
 

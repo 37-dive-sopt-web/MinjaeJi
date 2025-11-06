@@ -9,6 +9,7 @@ export const gameBoardSection = style({
   marginRight: "20px",
 });
 
+// 공통
 export const gameBoardHeader = style({
   display: "flex",
   justifyContent: "space-between",
@@ -16,6 +17,7 @@ export const gameBoardHeader = style({
   marginBottom: "20px",
 });
 
+// 공통
 export const gameBoardButton = style({
   border: "none",
   padding: "8px 15px",

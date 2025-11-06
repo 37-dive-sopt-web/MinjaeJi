@@ -49,8 +49,8 @@ export const infoContent = style({
   backgroundColor: "#f7f6f6ac",
   borderRadius: 10,
   padding: "10px 20px",
-  fontWeight: 700,
-  fontSize: 17,
+  fontWeight: 600,
+  fontSize: 15,
   justifyContent: "space-between",
 });
 
