@@ -137,7 +137,7 @@ export default function GameSection() {
 
       localStorage.setItem("gameRecords", JSON.stringify(updatedRecords));
     }
-  }, [isGameWon, stopTimer]);
+  }, [isGameWon]);
 
   return (
     <main className={styles.main}>
