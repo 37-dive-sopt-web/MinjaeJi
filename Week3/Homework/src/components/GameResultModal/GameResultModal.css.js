@@ -1,4 +1,5 @@
 import { style } from "@vanilla-extract/css";
+import { vars } from "../../styles/theme.css";
 
 export const overlay = style({
   position: "fixed",
@@ -12,8 +13,13 @@ export const overlay = style({
 
 export const modal = style({
   background: "#fff",
-  borderRadius: "10px",
+  borderRadius: 10,
   padding: "50px 60px",
   textAlign: "center",
   boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+});
+
+export const accent = style({
+  fontWeight: 600,
+  color: vars.color.secondary,
 });
