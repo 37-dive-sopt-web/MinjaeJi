@@ -1,7 +1,7 @@
 import { style } from "@vanilla-extract/css";
 import { vars } from "../../styles/theme.css";
 
-export const header = style({
+export const headerContainer = style({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
@@ -35,8 +35,11 @@ export const button = style({
   },
 });
 
-export const activeButton = style({
-  fontWeight: "600",
-  color: "white",
-  backgroundColor: vars.color.secondary,
-});
+export const buttonActive = style([
+  button,
+  {
+    fontWeight: "600",
+    color: "white",
+    backgroundColor: vars.color.secondary,
+  },
+]);
