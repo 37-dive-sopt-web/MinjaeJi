@@ -50,31 +50,26 @@ export default function GameSection() {
   };
 
   const handleCardClick = (card) => {
-    // 게임 종료 시 클릭 막기
     if (isGameOver) {
       setMessage("게임이 종료되었습니다!");
       return;
     }
 
-    // 이미 두 장 오픈된 상태면 클릭 불가
     if (isLocked) {
       setMessage("잠시만 기다려 주세요.");
       return;
     }
 
-    // 이미 선택한 카드 클릭 시
     if (flipped.includes(card.id)) {
       setMessage("이미 선택한 카드예요.");
       return;
     }
 
-    // 이미 매칭된 카드 클릭 시
     if (matched.includes(card.id)) {
       setMessage("이미 매치된 카드예요.");
       return;
     }
 
-    //첫 클릭일 때만 타이머 시작
     if (!hasStarted) {
       setHasStarted(true);
       startTimer();
@@ -84,7 +79,6 @@ export default function GameSection() {
     const newFlipped = [...flipped, card.id];
     setFlipped(newFlipped);
 
-    // 두 번째 카드 선택 시 매칭 로직
     if (newFlipped.length === 2) {
       const [first, second] = newFlipped.map((id) =>
         deck.find((c) => c.id === id)
@@ -116,11 +110,11 @@ export default function GameSection() {
       setMessage("모든 카드를 맞췄어요!");
 
       // 클리어 기록 저장
-      const clearTime = (TIME_LIMITS[level] - timeLeft).toFixed(2); // 클리어 시간 (소수점 둘째 자리)
+      const clearTime = (TIME_LIMITS[level] - timeLeft).toFixed(2);
       const record = {
         time: Number(clearTime),
         level,
-        date: new Date().toLocaleString(), // 현재 시각
+        date: new Date().toLocaleString(),
       };
 
       const existingRecords =
