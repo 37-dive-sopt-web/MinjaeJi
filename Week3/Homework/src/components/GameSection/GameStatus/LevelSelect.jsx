@@ -1,5 +1,8 @@
 import { useState } from "react";
 import * as styles from "./level-select.css";
+import dropDownIcon from "../../../assets/drop-down.png";
+import { useRef } from "react";
+import { useEffect } from "react";
 
 const levels = [
   { value: 1, label: "Level 1" },
@@ -11,12 +14,27 @@ export function LevelSelect({ value, onChange }) {
   const [open, setOpen] = useState(false);
   const selected = levels.find((l) => l.value === value);
 
+  const wrapperRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className={styles.wrapper}>
+    <div ref={wrapperRef} className={styles.wrapper}>
       <div className={styles.selected} onClick={() => setOpen((o) => !o)}>
         <span>{selected?.label ?? "레벨 선택"}</span>
         <img
-          src="/assets/down.png"
+          src={dropDownIcon}
           alt="dropdown"
           className={open ? styles.chevronOpen : styles.chevron}
           width={16}
