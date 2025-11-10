@@ -1,16 +1,16 @@
 import * as styles from "./game-status.css";
 import { LevelSelect } from "./LevelSelect";
 export default function GameStatus({
-  level,
+  gameLevel,
   setLevel,
-  matched,
+  matchedCards,
   totalCards,
   timeLeft,
-  message,
-  history,
+  guideMessage,
+  flipHistory,
 }) {
   const totalPairs = totalCards / 2;
-  const matchedPairs = matched.length / 2;
+  const matchedPairs = matchedCards.length / 2;
   const remainingPairs = totalPairs - matchedPairs;
 
   const pairStats = [
@@ -21,7 +21,7 @@ export default function GameStatus({
 
   return (
     <section className={styles.gameStatusSection}>
-      <LevelSelect value={level} onChange={setLevel} />
+      <LevelSelect value={gameLevel} onChange={setLevel} />
 
       <div className={styles.pairStat}>
         {pairStats.map((item) => (
@@ -33,14 +33,14 @@ export default function GameStatus({
       </div>
 
       <p className={styles.infoTitle}>안내 메시지</p>
-      <div className={styles.infoContent}>{message}</div>
+      <div className={styles.infoContent}>{guideMessage}</div>
 
       <p className={styles.infoTitle}>최근 히스토리</p>
       <div className={styles.historyContainer}>
-        {history.length === 0 ? (
+        {flipHistory.length === 0 ? (
           <div className={styles.infoContent}>아직 뒤집은 카드가 없어요.</div>
         ) : (
-          history.map((h, i) => (
+          flipHistory.map((h, i) => (
             <div key={i} className={styles.infoContent}>
               <div className={styles.historyPair}>
                 ({h.pair[0]}, {h.pair[1]})

@@ -3,9 +3,9 @@ import Card from "./Card.jsx";
 
 export default function GameBoard({
   level,
-  deck,
-  flipped,
-  matched,
+  cardDeck,
+  flippedCards,
+  matchedCards,
   onResetClick,
   onCardClick,
 }) {
@@ -25,12 +25,14 @@ export default function GameBoard({
           gridTemplateColumns: `repeat(${columns}, 100px)`,
         }}
       >
-        {deck.map((card) => (
+        {cardDeck.map((card) => (
           <Card
             key={card.id}
             card={card}
-            isFlipped={flipped.includes(card.id) || matched.includes(card.id)}
-            isMatched={matched.includes(card.id)}
+            isFlipped={
+              flippedCards.includes(card.id) || matchedCards.includes(card.id)
+            }
+            isMatched={matchedCards.includes(card.id)}
             onClick={onCardClick}
           />
         ))}

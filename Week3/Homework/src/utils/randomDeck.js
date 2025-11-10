@@ -7,7 +7,7 @@ export function shuffle(array, rng = Math.random) {
   return arr;
 }
 
-export function buildDeck(level = 1) {
+export function buildDeck(gameLevel = 1) {
   // 각 레벨별 행(row)과 열(col)
   const LEVEL_TO_GRID = {
     1: [4, 4], // 4x4 -> 16장 (8쌍)
@@ -15,7 +15,7 @@ export function buildDeck(level = 1) {
     3: [6, 6], // 6x6 -> 36장 (18쌍)
   };
 
-  const [rows, cols] = LEVEL_TO_GRID[level] ?? [4, 4];
+  const [rows, cols] = LEVEL_TO_GRID[gameLevel] ?? [4, 4];
   const total = rows * cols;
 
   if (total % 2 !== 0) throw new Error("카드 개수는 짝수여야 해요.");
