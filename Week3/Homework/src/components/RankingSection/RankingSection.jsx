@@ -1,4 +1,4 @@
-import * as styles from "./RankingSection.css";
+import * as styles from "./ranking-section.css";
 import { useEffect, useState } from "react";
 
 export default function RankingSection() {

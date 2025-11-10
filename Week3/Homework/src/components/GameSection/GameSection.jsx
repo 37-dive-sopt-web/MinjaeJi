@@ -1,8 +1,8 @@
-import * as styles from "./GameSection.css";
+import * as styles from "./game-section.css";
 import GameBoard from "./GameBoard/GameBoard";
 import GameStatus from "./GameStatus/GameStatus";
 import { useEffect, useState } from "react";
-import { buildDeck } from "../../utils/random-deck";
+import { buildDeck } from "../../utils/randomDeck";
 import { useGameTimer } from "../../hooks/useGameTimer";
 
 import GameResultModal from "../GameResultModal/GameResultModal";

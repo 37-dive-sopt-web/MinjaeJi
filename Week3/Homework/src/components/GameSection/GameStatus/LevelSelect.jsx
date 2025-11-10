@@ -1,5 +1,5 @@
 import { useState } from "react";
-import * as styles from "./LevelSelect.css";
+import * as styles from "./level-select.css";
 
 const levels = [
   { value: 1, label: "Level 1" },

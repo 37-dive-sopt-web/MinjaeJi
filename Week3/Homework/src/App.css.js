@@ -6,5 +6,5 @@ export const appContainer = style({
   display: "flex",
   flexDirection: "column",
   padding: "20px 100px",
-  gap: "20px",
+  gap: 20,
 });

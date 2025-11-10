@@ -1,4 +1,4 @@
-import * as styles from "./GameStatus.css";
+import * as styles from "./game-status.css";
 import { LevelSelect } from "./LevelSelect";
 export default function GameStatus({
   level,

@@ -1,4 +1,4 @@
-import * as styles from "./GameBoard.css.js";
+import * as styles from "./game-board.css.js";
 import Card from "./Card.jsx";
 
 export default function GameBoard({

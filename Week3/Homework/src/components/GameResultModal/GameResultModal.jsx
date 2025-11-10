@@ -1,6 +1,6 @@
 import { useCountdownTimer } from "../../hooks/useCountdownTimer";
 import ModalPortal from "../ModalPortal";
-import * as styles from "./GameResultModal.css";
+import * as styles from "./game-result-modal.css";
 
 export default function GameResultModal({ mode, level, clearTime, onRestart }) {
   const isSuccess = mode === "success";

@@ -1,4 +1,4 @@
-import * as styles from "./Header.css.js";
+import * as styles from "./header.css";
 
 export default function Header({ activeTab, setActiveTab }) {
   return (
