@@ -1,15 +1,15 @@
 import * as styles from "./game-board.css.js";
-import Card from "./Card.jsx";
+import Card from "../../../components/Card/Card.jsx";
 
 export default function GameBoard({
-  level,
+  gameLevel,
   cardDeck,
   flippedCards,
   matchedCards,
   onResetClick,
   onCardClick,
 }) {
-  const columns = level === 1 ? 4 : level === 2 ? 6 : 6;
+  const columns = gameLevel === 1 ? 4 : gameLevel === 2 ? 6 : 6;
   return (
     <section className={styles.gameBoardSection}>
       <div className={styles.gameBoardHeader}>

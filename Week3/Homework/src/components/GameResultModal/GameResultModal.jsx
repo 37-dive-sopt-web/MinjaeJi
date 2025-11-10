@@ -2,7 +2,12 @@ import { useCountdownTimer } from "../../hooks/useCountdownTimer";
 import ModalPortal from "../ModalPortal";
 import * as styles from "./game-result-modal.css";
 
-export default function GameResultModal({ mode, level, clearTime, onRestart }) {
+export default function GameResultModal({
+  mode,
+  gameLevel,
+  clearTime,
+  onRestart,
+}) {
   const isSuccess = mode === "success";
   const countDown = useCountdownTimer(5, onRestart, isSuccess);
 
@@ -21,7 +26,7 @@ export default function GameResultModal({ mode, level, clearTime, onRestart }) {
             <>
               <h2>축하합니다!🥳</h2>
               <p>
-                <span className={styles.accent}>level {level}</span>을{" "}
+                <span className={styles.accent}>level {gameLevel}</span>을{" "}
                 <span className={styles.accent}>{clearTime.toFixed(2)}</span>초
                 만에 클리어 했어요 🔥
               </p>

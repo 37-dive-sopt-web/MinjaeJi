@@ -1,6 +1,6 @@
 import { useState } from "react";
 import * as styles from "./level-select.css";
-import dropDownIcon from "../../../assets/drop-down.png";
+import dropDownIcon from "../../assets/drop-down.png";
 import { useRef } from "react";
 import { useEffect } from "react";
 

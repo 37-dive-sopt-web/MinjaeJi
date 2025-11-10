@@ -1,4 +1,4 @@
-import * as styles from "./card.css.js";
+import * as styles from "./card.css";
 
 export default function Card({ card, isFlipped, isMatched, onClick }) {
   return (

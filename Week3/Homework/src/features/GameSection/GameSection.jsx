@@ -1,12 +1,12 @@
 import * as styles from "./game-section.css";
 import GameBoard from "./GameBoard/GameBoard";
 import GameStatus from "./GameStatus/GameStatus";
-import GameResultModal from "../GameResultModal/GameResultModal";
+import GameResultModal from "../../components/GameResultModal/GameResultModal";
 import { useMainGameLogic } from "../../hooks/useMainGameLogic";
 
 export default function GameSection() {
   const {
-    level,
+    gameLevel,
     cardDeck,
     flippedCards,
     matchedCards,
@@ -15,7 +15,7 @@ export default function GameSection() {
     guideMessage,
     isGameWon,
     isTimeOver,
-    setLevel,
+    setGameLevel,
     handleResetGame,
     handleCardClick,
     timeLimit,
@@ -24,7 +24,7 @@ export default function GameSection() {
   return (
     <main className={styles.main}>
       <GameBoard
-        level={level}
+        gameLevel={gameLevel}
         cardDeck={cardDeck}
         flippedCards={flippedCards}
         matchedCards={matchedCards}
@@ -32,8 +32,8 @@ export default function GameSection() {
         onCardClick={handleCardClick}
       />
       <GameStatus
-        level={level}
-        setLevel={setLevel}
+        gameLevel={gameLevel}
+        setGameLevel={setGameLevel}
         matchedCards={matchedCards}
         totalCards={cardDeck.length}
         timeLeft={timeLeft}
@@ -43,7 +43,7 @@ export default function GameSection() {
       {isGameWon && (
         <GameResultModal
           mode="success"
-          level={level}
+          gameLevel={gameLevel}
           clearTime={timeLimit - timeLeft}
           onRestart={handleResetGame}
         />

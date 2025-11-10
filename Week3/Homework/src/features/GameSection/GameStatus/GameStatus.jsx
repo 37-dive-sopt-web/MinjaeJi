@@ -1,8 +1,8 @@
 import * as styles from "./game-status.css";
-import { LevelSelect } from "./LevelSelect";
+import { LevelSelect } from "../../../components/LevelSelect/LevelSelect";
 export default function GameStatus({
   gameLevel,
-  setLevel,
+  setGameLevel,
   matchedCards,
   totalCards,
   timeLeft,
@@ -21,7 +21,7 @@ export default function GameStatus({
 
   return (
     <section className={styles.gameStatusSection}>
-      <LevelSelect value={gameLevel} onChange={setLevel} />
+      <LevelSelect value={gameLevel} onChange={setGameLevel} />
 
       <div className={styles.pairStat}>
         {pairStats.map((item) => (
