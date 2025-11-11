@@ -1,3 +1,4 @@
+import * as commonStyles from "../../styles/common.css";
 import * as styles from "./ranking-section.css";
 import { useEffect, useState } from "react";
 
@@ -25,11 +26,11 @@ export default function RankingSection() {
   );
 
   return (
-    <main className={styles.main}>
-      <div className={styles.gameBoardHeader}>
+    <main className={commonStyles.main.default}>
+      <div className={commonStyles.sectionHeader}>
         <h2>랭킹 보드</h2>
         <button
-          className={styles.gameBoardButton}
+          className={commonStyles.sectionHeaderButton}
           onClick={handleClearGameRecords}
         >
           기록 초기화

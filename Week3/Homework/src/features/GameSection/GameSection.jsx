@@ -1,4 +1,4 @@
-import * as styles from "./game-section.css";
+import * as styles from "../../styles/common.css";
 import { useMainGameLogic } from "../../hooks/useMainGameLogic";
 import GameBoard from "./GameBoard/GameBoard";
 import GameStatus from "./GameStatus/GameStatus";
@@ -22,7 +22,7 @@ export default function GameSection() {
   } = useMainGameLogic();
 
   return (
-    <main className={styles.main}>
+    <main className={styles.main.flex}>
       <GameBoard
         gameLevel={gameLevel}
         cardDeck={cardDeck}
