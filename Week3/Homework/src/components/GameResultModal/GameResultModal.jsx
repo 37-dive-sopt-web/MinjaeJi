@@ -1,6 +1,7 @@
 import * as styles from "./game-result-modal.css";
 import { useCountdownTimer } from "../../hooks/useCountdownTimer";
 import ModalPortal from "../ModalPortal";
+import { useEffect } from "react";
 
 export default function GameResultModal({
   mode,
@@ -10,6 +11,15 @@ export default function GameResultModal({
 }) {
   const isSuccess = mode === "success";
   const countDown = useCountdownTimer(5, onRestart, isSuccess);
+
+  useEffect(() => {
+    const originalStyle = window.getComputedStyle(document.body).overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = originalStyle;
+    };
+  }, []);
 
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) onRestart();
