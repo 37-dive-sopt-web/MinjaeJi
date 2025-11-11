@@ -1,8 +1,8 @@
 import * as styles from "./game-section.css";
+import { useMainGameLogic } from "../../hooks/useMainGameLogic";
 import GameBoard from "./GameBoard/GameBoard";
 import GameStatus from "./GameStatus/GameStatus";
 import GameResultModal from "../../components/GameResultModal/GameResultModal";
-import { useMainGameLogic } from "../../hooks/useMainGameLogic";
 
 export default function GameSection() {
   const {

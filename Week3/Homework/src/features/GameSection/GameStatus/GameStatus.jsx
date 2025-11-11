@@ -1,5 +1,6 @@
 import * as styles from "./game-status.css";
 import { LevelSelect } from "../../../components/LevelSelect/LevelSelect";
+
 export default function GameStatus({
   gameLevel,
   setGameLevel,
@@ -40,17 +41,17 @@ export default function GameStatus({
         {flipHistory.length === 0 ? (
           <div className={styles.infoContent}>아직 뒤집은 카드가 없어요.</div>
         ) : (
-          flipHistory.map((h, i) => (
+          flipHistory.map((history, i) => (
             <div key={i} className={styles.infoContent}>
               <div className={styles.historyPair}>
-                ({h.pair[0]}, {h.pair[1]})
+                ({history.pair[0]}, {history.pair[1]})
               </div>
               <span
                 className={`${styles.historyResult} ${
-                  h.success ? "success" : "fail"
+                  history.success ? "success" : "fail"
                 }`}
               >
-                {h.success ? "성공" : "실패"}
+                {history.success ? "성공" : "실패"}
               </span>
             </div>
           ))

@@ -1,8 +1,6 @@
-import { useState } from "react";
 import * as styles from "./level-select.css";
+import { useState, useEffect, useRef } from "react";
 import dropDownIcon from "../../assets/drop-down.png";
-import { useRef } from "react";
-import { useEffect } from "react";
 
 const levels = [
   { value: 1, label: "Level 1" },

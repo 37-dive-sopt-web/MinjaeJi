@@ -1,6 +1,6 @@
+import * as styles from "./game-result-modal.css";
 import { useCountdownTimer } from "../../hooks/useCountdownTimer";
 import ModalPortal from "../ModalPortal";
-import * as styles from "./game-result-modal.css";
 
 export default function GameResultModal({
   mode,
@@ -26,7 +26,7 @@ export default function GameResultModal({
             <>
               <h2>축하합니다!🥳</h2>
               <p>
-                <span className={styles.accent}>level {gameLevel}</span>을{" "}
+                <span className={styles.accent}>level {gameLevel}</span>을
                 <span className={styles.accent}>{clearTime.toFixed(2)}</span>초
                 만에 클리어 했어요 🔥
               </p>
