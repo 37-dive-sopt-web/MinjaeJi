@@ -13,7 +13,7 @@ export const overlay = style({
 
 export const modal = style({
   background: "#fff",
-  borderRadius: 10,
+  borderRadius: "10px",
   padding: "50px 60px",
   textAlign: "center",
   boxShadow: "0 4px 12px rgba(0,0,0,0.2)",

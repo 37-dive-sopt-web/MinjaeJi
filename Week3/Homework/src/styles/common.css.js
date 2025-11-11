@@ -3,7 +3,7 @@ import { vars } from "./theme.css";
 
 const baseMain = style({
   height: "100%",
-  borderRadius: 20,
+  borderRadius: "20px",
   boxShadow: "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)",
   backgroundColor: vars.color.background,
   padding: "20px 30px 50px 30px",

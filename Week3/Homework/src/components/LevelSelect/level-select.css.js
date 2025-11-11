@@ -10,7 +10,7 @@ export const selected = style({
   justifyContent: "space-between",
   alignItems: "center",
   padding: "8px 12px",
-  borderRadius: 8,
+  borderRadius: "8px",
   cursor: "pointer",
   backgroundColor: "#f7e6eaff",
   fontWeight: "600",
@@ -39,7 +39,7 @@ export const option = style({
 });
 
 export const chevron = style({
-  marginLeft: 8,
+  marginLeft: "8px",
   transition: "transform 0.4s",
 });
 

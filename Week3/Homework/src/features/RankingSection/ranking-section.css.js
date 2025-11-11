@@ -5,9 +5,9 @@ export const rankingTable = style({
   width: "100%",
   borderCollapse: "collapse",
   textAlign: "center",
-  fontSize: 15,
+  fontSize: "15px",
   backgroundColor: "#fff",
-  borderRadius: 12,
+  borderRadius: "12px",
   overflow: "hidden",
   boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
 });
@@ -34,7 +34,7 @@ globalStyle(`${rankingTable} tr`, {
 
 export const noResultMessage = style({
   color: "#999",
-  fontSize: 17,
+  fontSize: "17px",
   fontWeight: 600,
-  marginTop: 30,
+  marginTop: "30px",
 });

@@ -23,44 +23,44 @@ export const pairContainer = style({
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  gap: 10,
+  gap: "10px",
   backgroundColor: "#f7f6f6ac",
-  borderRadius: 15,
-  padding: 12,
+  borderRadius: "15px",
+  padding: "12px",
 });
 
 export const title = style({
   fontWeight: 600,
-  fontSize: 15,
+  fontSize: "15px",
 });
 export const content = style({
   fontWeight: 700,
-  fontSize: 20,
+  fontSize: "20px",
 });
 
 export const infoTitle = style({
   margin: 0,
   fontWeight: 700,
-  fontSize: 17,
+  fontSize: "17px",
 });
 
 export const infoContent = style({
   display: "flex",
   backgroundColor: "#f7f6f6ac",
-  borderRadius: 10,
+  borderRadius: "10px",
   padding: "10px 20px",
   fontWeight: 600,
-  fontSize: 15,
+  fontSize: "15px",
   justifyContent: "space-between",
 });
 
 export const historyContainer = style({
-  height: 150,
+  height: "150px",
   display: "flex",
   flexDirection: "column",
-  gap: 10,
+  gap: "10px",
   overflowY: "auto",
-  borderRadius: 8,
+  borderRadius: "8px",
   selectors: {
     "&::-webkit-scrollbar": { display: "none" },
   },
