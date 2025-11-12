@@ -1,0 +1,45 @@
+import { style } from "@vanilla-extract/css";
+import { vars } from "../../styles/theme.css";
+
+export const headerContainer = style({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  borderRadius: "20px",
+  boxShadow: "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)",
+  backgroundColor: vars.color.background,
+  color: vars.color.primary,
+  padding: "20px 30px",
+  cursor: "default",
+});
+
+export const buttonContainer = style({
+  display: "flex",
+  gap: "10px",
+});
+
+export const button = style({
+  border: "none",
+  padding: "8px 20px",
+  borderRadius: "15px",
+  boxShadow: "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)",
+  cursor: "pointer",
+  fontSize: "15px",
+  fontWeight: "500",
+  transition: "transform 0.2s ease, boxShadow 0.2s ease",
+  selectors: {
+    "&:hover": {
+      transform: "scale(1.05)",
+      boxShadow: "0 3px 6px rgba(0, 0, 0, 0.16)",
+    },
+  },
+});
+
+export const buttonActive = style([
+  button,
+  {
+    fontWeight: "600",
+    color: "white",
+    backgroundColor: vars.color.secondary,
+  },
+]);
