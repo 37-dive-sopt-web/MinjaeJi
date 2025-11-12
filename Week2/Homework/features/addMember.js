@@ -30,9 +30,9 @@ export function handleAddMember(renderResultTable) {
         : 0;
     const newMember = {
       id: maxMemberId + 1,
-      name: document.getElementById("newMemberName").value,
-      englishName: document.getElementById("newMemberEnglishName").value,
-      github: document.getElementById("newMemberGithub").value,
+      name: document.getElementById("newMemberName").value.trim(),
+      englishName: document.getElementById("newMemberEnglishName").value.trim(),
+      github: document.getElementById("newMemberGithub").value.trim(),
       gender: document.getElementById("newMemberGender").value,
       role: document.getElementById("newMemberRole").value,
       codeReviewGroup: document.getElementById("newMemberGroup").value,
