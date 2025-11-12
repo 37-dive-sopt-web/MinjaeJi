@@ -1,0 +1,23 @@
+/* 헤더 스타일 */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  padding: 1.875rem 2.5rem;
+  background-color: var(--primary-color);
+  z-index: 50;
+  cursor: default;
+}
+
+header span {
+  justify-self: start;
+  font-size: 2rem;
+}
+
+header div {
+  text-align: right;
+  font-weight: 500;
+}
