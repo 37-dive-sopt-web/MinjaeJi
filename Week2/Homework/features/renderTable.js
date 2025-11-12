@@ -13,7 +13,7 @@ export function renderResultTable(membersData) {
         <td><input type="checkbox" data-id="${member.id}" /></td>
         <td>${member.name}</td>
         <td>${member.englishName}</td>
-        <td><a href="https://github.com/${member.github}" target="_blank" rel="noopener norefferer">${member.github}</a></td>
+        <td><a href="https://github.com/${member.github}" target="_blank" rel="noopener noreferrer">${member.github}</a></td>
         <td>${member.gender}</td>
         <td>${member.role}</td>
         <td>${member.codeReviewGroup}</td>
