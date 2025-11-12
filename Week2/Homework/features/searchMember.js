@@ -72,12 +72,15 @@ export function handleSearchMember(renderResultTable) {
 
   resetBtn.addEventListener("click", () => {
     searchInputs.forEach((input) => (input.value = ""));
+    const genderDefaultText = genderDropdown.dataset.default;
+    const roleDefaultText = roleDropdown.dataset.default;
 
     document.querySelectorAll(".dropdown-selected").forEach((selectedItem) => {
       selectedItem.dataset.value = "";
-      selectedItem.textContent = selectedItem.classList.contains("gender")
-        ? "성별"
-        : "역할";
+      const parent = selectedItem.closest(".custom-dropdown");
+      selectedItem.textContent = parent.classList.contains("gender")
+        ? genderDefaultText
+        : roleDefaultText;
     });
 
     renderResultTable(getMembersData());
