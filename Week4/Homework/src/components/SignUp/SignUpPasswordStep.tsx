@@ -1,7 +1,7 @@
+import * as styles from "@/pages/SignUp/sign-up.css.ts";
 import { useState } from "react";
-import * as styles from "../../pages/SignUp/sign-up.css.ts";
-import iconEyeClosed from "../../assets/icon-eye-closed.png";
-import iconEyeOpen from "../../assets/icon-eye-open.png";
+import iconEyeClosed from "@/assets/icon-eye-closed.png";
+import iconEyeOpen from "@/assets/icon-eye-open.png";
 import Button from "../Button/Button.tsx";
 
 type SignUpPasswordStepProps = {

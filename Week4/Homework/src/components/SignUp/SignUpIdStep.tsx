@@ -1,4 +1,4 @@
-import * as styles from "../../pages/SignUp/sign-up.css";
+import * as styles from "@/pages/SignUp/sign-up.css";
 import Button from "../Button/Button";
 
 type SignUpIdStepProps = {

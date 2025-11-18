@@ -1,5 +1,5 @@
+import * as styles from "@/pages/SignUp/sign-up.css";
 import Button from "../Button/Button";
-import * as styles from "../../pages/SignUp/sign-up.css";
 
 export default function SignUpProfileStep() {
   return (

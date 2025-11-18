@@ -1,9 +1,9 @@
-import { useState } from "react";
 import * as styles from "./login.css";
-import iconEyeClosed from "../../assets/icon-eye-closed.png";
-import iconEyeOpen from "../../assets/icon-eye-open.png";
-import Button from "../../components/Button/Button";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import iconEyeClosed from "@/assets/icon-eye-closed.png";
+import iconEyeOpen from "@/assets/icon-eye-open.png";
+import Button from "@/components/Button/Button";
 
 export default function Login() {
   const navigate = useNavigate();

@@ -1,6 +1,6 @@
+import * as styles from "./header.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import * as styles from "./header.css";
 import hamburgerIcon from "@/assets/hamburger-icon.png";
 import closeIcon from "@/assets/x-icon.png";
 

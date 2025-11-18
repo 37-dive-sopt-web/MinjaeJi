@@ -1,11 +1,11 @@
-import { useState } from "react";
 import * as styles from "./sign-up.css";
-import iconBack from "../../assets/back.png";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import SignUpIdStep from "../../components/SignUp/SignUpIdStep";
-import SignUpPasswordStep from "../../components/SignUp/SignUpPasswordStep";
-import SignUpProfileStep from "../../components/SignUp/SignUpProfileStep";
+import iconBack from "@/assets/back.png";
+import SignUpIdStep from "@/components/SignUp/SignUpIdStep";
+import SignUpPasswordStep from "@/components/SignUp/SignUpPasswordStep";
+import SignUpProfileStep from "@/components/SignUp/SignUpProfileStep";
 
 const stepComponents = {
   1: SignUpIdStep,
