@@ -1,18 +1,24 @@
 import { useState } from "react";
 import * as styles from "@/pages/SignUp/sign-up.css";
 import Button from "../Button/Button";
+import type { SignUpFormData } from "@/pages/SignUp";
 
 type SignUpIdStepProps = {
   onNext: () => void;
+  formData: Pick<SignUpFormData, "memberId">;
+  setFormData: React.Dispatch<React.SetStateAction<SignUpFormData>>;
 };
 
-export default function SignUpIdStep({ onNext }: SignUpIdStepProps) {
-  const [memberId, setMemberId] = useState("");
+export default function SignUpIdStep({
+  onNext,
+  formData,
+  setFormData,
+}: SignUpIdStepProps) {
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    setMemberId(value);
+    setFormData((prev) => ({ ...prev, memberId: value }));
 
     if (value.length > 50) {
       setErrorMessage("아이디는 50글자를 초과할 수 없습니다.");
@@ -21,7 +27,7 @@ export default function SignUpIdStep({ onNext }: SignUpIdStepProps) {
     }
   };
 
-  const isDisabled = !memberId.trim() || memberId.length > 50;
+  const isDisabled = !formData.memberId.trim() || formData.memberId.length > 50;
 
   return (
     <>
@@ -31,7 +37,7 @@ export default function SignUpIdStep({ onNext }: SignUpIdStepProps) {
         <input
           className={styles.input}
           placeholder="아이디를 입력해 주세요."
-          value={memberId}
+          value={formData.memberId}
           onChange={handleInputChange}
         />
         {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}

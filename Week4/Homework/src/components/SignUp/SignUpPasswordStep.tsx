@@ -4,24 +4,36 @@ import iconEyeClosed from "@/assets/icon-eye-closed.png";
 import iconEyeOpen from "@/assets/icon-eye-open.png";
 import Button from "../Button/Button.tsx";
 import { getPasswordErrors } from "@/utils/getPasswordErrors.ts";
+import type { SignUpFormData } from "@/pages/SignUp/index.tsx";
 
 type SignUpPasswordStepProps = {
   onNext: () => void;
+  formData: Pick<SignUpFormData, "password" | "confirmPassword">;
+  setFormData: React.Dispatch<React.SetStateAction<SignUpFormData>>;
 };
 
 export default function SignUpPasswordStep({
   onNext,
+  formData,
+  setFormData,
 }: SignUpPasswordStepProps) {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-
-  const passwordErrors = getPasswordErrors(password);
+  const passwordErrors = getPasswordErrors(formData.password);
   const firstError = passwordErrors[0];
   const isPasswordValid = passwordErrors.length === 0;
-  const isMatch = password === confirmPassword;
+  const isMatch = formData.password === formData.confirmPassword;
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData((prev) => ({ ...prev, password: e.target.value }));
+  };
+
+  const handleConfirmPasswordChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setFormData((prev) => ({ ...prev, confirmPassword: e.target.value }));
+  };
 
   return (
     <>
@@ -32,8 +44,8 @@ export default function SignUpPasswordStep({
             className={styles.input}
             type={showPassword ? "text" : "password"}
             placeholder="비밀번호를 입력해 주세요."
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={formData.password}
+            onChange={handlePasswordChange}
             autoComplete="new-password"
           />
           <button
@@ -45,6 +57,7 @@ export default function SignUpPasswordStep({
               src={showPassword ? iconEyeClosed : iconEyeOpen}
               width={20}
               height={20}
+              alt="비밀번호 표시"
             />
           </button>
         </div>
@@ -59,8 +72,8 @@ export default function SignUpPasswordStep({
             className={styles.input}
             type={showConfirmPassword ? "text" : "password"}
             placeholder="비밀번호를 다시 입력해 주세요."
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            value={formData.confirmPassword}
+            onChange={handleConfirmPasswordChange}
             autoComplete="new-password"
           />
           <button
@@ -72,11 +85,12 @@ export default function SignUpPasswordStep({
               src={showConfirmPassword ? iconEyeClosed : iconEyeOpen}
               width={20}
               height={20}
+              alt="비밀번호 확인 표시"
             />
           </button>
         </div>
 
-        {password && confirmPassword && !isMatch && (
+        {formData.password && formData.confirmPassword && !isMatch && (
           <p className={styles.errorMessage}>비밀번호가 일치하지 않습니다.</p>
         )}
       </label>

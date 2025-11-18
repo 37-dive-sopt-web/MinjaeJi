@@ -2,18 +2,19 @@ import { useState } from "react";
 import * as styles from "@/pages/SignUp/sign-up.css";
 import Button from "../Button/Button";
 import { isNumeric, isValidEmail } from "@/utils/profileInputValidators";
+import type { SignUpFormData } from "@/pages/SignUp";
 
 type SignUpProfileStepProps = {
-  onNext?: () => void;
+  onNext: () => void;
+  formData: Pick<SignUpFormData, "name" | "email" | "age">;
+  setFormData: React.Dispatch<React.SetStateAction<SignUpFormData>>;
 };
 
-export default function SignUpProfileStep({ onNext }: SignUpProfileStepProps) {
-  const [signUpForm, setSignUpForm] = useState({
-    name: "",
-    email: "",
-    age: "",
-  });
-
+export default function SignUpProfileStep({
+  onNext,
+  formData,
+  setFormData,
+}: SignUpProfileStepProps) {
   const [errors, setErrors] = useState({
     email: "",
     age: "",
@@ -22,7 +23,7 @@ export default function SignUpProfileStep({ onNext }: SignUpProfileStepProps) {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
-    setSignUpForm((prev) => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
 
     if (name === "email") {
       if (!value) {
@@ -52,9 +53,9 @@ export default function SignUpProfileStep({ onNext }: SignUpProfileStepProps) {
   };
 
   const isDisabled =
-    !signUpForm.name.trim() ||
-    !signUpForm.email.trim() ||
-    !signUpForm.age.trim() ||
+    !formData.name.trim() ||
+    !formData.email.trim() ||
+    !formData.age.trim() ||
     errors.email !== "" ||
     errors.age !== "";
 
@@ -66,7 +67,7 @@ export default function SignUpProfileStep({ onNext }: SignUpProfileStepProps) {
           className={styles.input}
           name="name"
           placeholder="이름을 입력해 주세요."
-          value={signUpForm.name}
+          value={formData.name}
           onChange={onChange}
         />
       </label>
@@ -77,7 +78,7 @@ export default function SignUpProfileStep({ onNext }: SignUpProfileStepProps) {
           className={styles.input}
           name="email"
           placeholder="이메일을 입력해 주세요."
-          value={signUpForm.email}
+          value={formData.email}
           onChange={onChange}
         />
         {errors.email && <p className={styles.errorMessage}>{errors.email}</p>}
@@ -89,7 +90,7 @@ export default function SignUpProfileStep({ onNext }: SignUpProfileStepProps) {
           className={styles.input}
           name="age"
           placeholder="나이를 입력해 주세요."
-          value={signUpForm.age}
+          value={formData.age}
           onChange={onChange}
         />
         {errors.age && <p className={styles.errorMessage}>{errors.age}</p>}
