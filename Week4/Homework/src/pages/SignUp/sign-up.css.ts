@@ -3,12 +3,12 @@ import { style } from "@vanilla-extract/css";
 export const container = style({
   display: "flex",
   flexDirection: "column",
-  justifyContent: "center",
   alignItems: "center",
   height: "100%",
   backgroundColor: "#f8f9fb",
   gap: "24px",
   position: "relative",
+  paddingTop: "90px",
 });
 
 export const backButton = style({
@@ -44,7 +44,7 @@ export const title = style({
 export const step = style({
   display: "flex",
   flexDirection: "column",
-  gap: "30px",
+  gap: "35px",
 });
 
 export const label = style({
@@ -55,7 +55,7 @@ export const label = style({
 
 export const input = style({
   flex: 1,
-  padding: "10px 12px",
+  padding: "10px 40px 10px 12px",
   border: "1px solid #ccc",
   borderRadius: "8px",
   fontSize: "14px",
@@ -93,4 +93,9 @@ export const loginLink = style({
   selectors: {
     "&:hover": { textDecoration: "underline" },
   },
+});
+
+export const errorMessage = style({
+  color: "red",
+  fontSize: "12px",
 });

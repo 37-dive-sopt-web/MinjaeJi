@@ -3,6 +3,7 @@ import { useState } from "react";
 import iconEyeClosed from "@/assets/icon-eye-closed.png";
 import iconEyeOpen from "@/assets/icon-eye-open.png";
 import Button from "../Button/Button.tsx";
+import { getPasswordErrors } from "@/utils/getPasswordErrors.ts";
 
 type SignUpPasswordStepProps = {
   onNext: () => void;
@@ -17,6 +18,9 @@ export default function SignUpPasswordStep({
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const passwordErrors = getPasswordErrors(password);
+  const firstError = passwordErrors[0];
+  const isPasswordValid = passwordErrors.length === 0;
   const isMatch = password === confirmPassword;
 
   return (
@@ -30,6 +34,7 @@ export default function SignUpPasswordStep({
             placeholder="비밀번호를 입력해 주세요."
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            autoComplete="new-password"
           />
           <button
             type="button"
@@ -43,7 +48,10 @@ export default function SignUpPasswordStep({
             />
           </button>
         </div>
+
+        {firstError && <p className={styles.errorMessage}>{firstError}</p>}
       </label>
+
       <label className={styles.label}>
         <span>비밀번호 확인</span>
         <div className={styles.passwordWrapper}>
@@ -53,6 +61,7 @@ export default function SignUpPasswordStep({
             placeholder="비밀번호를 다시 입력해 주세요."
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
+            autoComplete="new-password"
           />
           <button
             type="button"
@@ -66,8 +75,17 @@ export default function SignUpPasswordStep({
             />
           </button>
         </div>
+
+        {password && confirmPassword && !isMatch && (
+          <p className={styles.errorMessage}>비밀번호가 일치하지 않습니다.</p>
+        )}
       </label>
-      <Button type="button" onClick={onNext} disabled={!isMatch || !password}>
+
+      <Button
+        type="button"
+        onClick={onNext}
+        disabled={!isMatch || !isPasswordValid}
+      >
         다음
       </Button>
     </>
