@@ -57,3 +57,17 @@ globalStyle("table", {
   borderCollapse: "collapse",
   borderSpacing: 0,
 });
+
+/* Chrome, Safari, Edge, Opera */
+globalStyle(
+  "input::-webkit-outer-spin-button, input::-webkit-inner-spin-button",
+  {
+    WebkitAppearance: "none",
+    margin: 0,
+  }
+);
+
+/* Firefox */
+globalStyle("input[type='number']", {
+  MozAppearance: "textfield",
+});
