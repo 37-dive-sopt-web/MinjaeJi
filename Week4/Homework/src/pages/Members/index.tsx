@@ -1,30 +1,26 @@
 import { useState } from "react";
 import * as styles from "./member.css";
 import Button from "@/components/Button/Button";
-
-type MemberInfo = {
-  id: string;
-  name: string;
-  email: string;
-  age: number;
-};
+import { getUserInfo } from "@/apis/users/users.api";
+import type { User } from "@/apis/users/users.type";
 
 export default function Members() {
   const [searchId, setSearchId] = useState("");
-  const [member, setMember] = useState<MemberInfo | null>(null);
+  const [member, setMember] = useState<User | null>(null);
 
-  const handleSearchBtnClick = () => {
-    // 테스트용 mock 데이터
-    if (searchId === "test") {
-      setMember({
-        id: "test",
-        name: "홍길동",
-        email: "test@example.com",
-        age: 25,
-      });
-    } else {
-      setMember(null);
-      alert("해당 회원을 찾을 수 없습니다.");
+  const handleSearchBtnClick = async () => {
+    try {
+      const userInfoResponse = await getUserInfo(parseInt(searchId));
+      console.log("사용자 정보 조회 성공", userInfoResponse);
+      // 사용자 정보가 없으면 에러 처리
+      if (!userInfoResponse.data) {
+        alert("사용자 정보를 가져올 수 없습니다.");
+        return;
+      }
+      setMember(userInfoResponse.data);
+    } catch (e) {
+      console.error("로그인 실패", e);
+      alert("아이디 또는 비밀번호가 올바르지 않습니다."); // TODO: 모달로 변경
     }
   };
 
