@@ -6,6 +6,8 @@ import iconEyeOpen from "@/assets/icon-eye-open.png";
 import Button from "@/components/Button/Button";
 import type { PostUserLoginRequest } from "@/apis/auth/auth.type";
 import { postUserLogin } from "@/apis/auth/auth.api";
+import { storage } from "@/utils/storage";
+import { getUserInfo } from "@/apis/users/users.api";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -35,9 +37,26 @@ export default function Login() {
         password: loginForm.password,
       };
 
-      const response = await postUserLogin(body);
+      const loginResponse = await postUserLogin(body);
 
-      console.log("로그인 성공", response);
+      const userId = loginResponse.data?.userId;
+      if (!userId) {
+        throw new Error("사용자 ID를 가져올 수 없습니다.");
+      }
+
+      storage.setUserId(userId);
+
+      const userInfoResponse = await getUserInfo(userId);
+      console.log("사용자 정보 조회 성공", userInfoResponse);
+
+      // 사용자 정보가 없으면 에러 처리
+      if (!userInfoResponse.data) {
+        alert("사용자 정보를 가져올 수 없습니다.");
+        return;
+      }
+
+      // 사용자 정보 저장
+      storage.setUser(userInfoResponse.data);
 
       navigate("/my-page");
     } catch (e) {
@@ -57,7 +76,7 @@ export default function Login() {
           <span>아이디</span>
           <input
             className={styles.input}
-            name="id"
+            name="username"
             value={loginForm.username}
             onChange={onChange}
             placeholder="아이디를 입력해 주세요."
