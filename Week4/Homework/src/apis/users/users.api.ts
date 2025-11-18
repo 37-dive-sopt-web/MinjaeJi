@@ -12,7 +12,7 @@ import type {
 // 회원 가입
 export const postUserSignUp = (body: PostUserSignUpRequest) => {
   return apiPost<PostUserSignUpResponse["data"], PostUserSignUpRequest>(
-    "/users/signup",
+    "/users",
     { body }
   );
 };
