@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import hamburgerIcon from "@/assets/hamburger-icon.png";
 import closeIcon from "@/assets/x-icon.png";
+import { storage } from "@/utils/storage";
+import { deleteUserInfo } from "@/apis/users/users.api";
 
 export default function Header() {
   const [openSideBarMenu, setOpenSideBarMenu] = useState(false);
@@ -12,6 +14,31 @@ export default function Header() {
   const handleNavClick = (path: string) => {
     navigate(path);
     setOpenSideBarMenu(false);
+  };
+
+  const handleLogOutClick = () => {
+    if (confirm("정말 로그아웃 하시겠습니까?")) {
+      storage.clearUser();
+      navigate("/login");
+    }
+    return;
+  };
+
+  const handleWithDrawClick = async () => {
+    if (!confirm("정말 탈퇴하시겠습니까?")) return;
+
+    const userId = storage.getUserId();
+    try {
+      if (!userId) {
+        throw new Error("사용자 ID를 가져올 수 없습니다.");
+      }
+      const response = await deleteUserInfo(userId);
+      console.log("회원 탈퇴 완료:", response);
+      navigate("/login");
+    } catch (e) {
+      console.error("회원 탈퇴 실패:", e);
+      alert("회원 탈퇴에 실패했습니다.");
+    }
   };
 
   return (
@@ -39,9 +66,13 @@ export default function Header() {
             회원 조회
           </span>
 
-          <span className={styles.navItem}>로그아웃</span>
+          <span className={styles.navItem} onClick={handleLogOutClick}>
+            로그아웃
+          </span>
 
-          <span className={styles.navItem}>회원 탈퇴</span>
+          <span className={styles.navItem} onClick={handleWithDrawClick}>
+            회원 탈퇴
+          </span>
         </nav>
 
         <div
@@ -89,9 +120,13 @@ export default function Header() {
           회원 조회
         </span>
 
-        <span className={styles.navItem}>로그아웃</span>
+        <span className={styles.navItem} onClick={handleLogOutClick}>
+          로그아웃
+        </span>
 
-        <span className={styles.navItem}>회원 탈퇴</span>
+        <span className={styles.navItem} onClick={handleWithDrawClick}>
+          회원 탈퇴
+        </span>
       </aside>
     </>
   );
