@@ -4,14 +4,17 @@ import { useNavigate } from "react-router-dom";
 import iconEyeClosed from "@/assets/icon-eye-closed.png";
 import iconEyeOpen from "@/assets/icon-eye-open.png";
 import Button from "@/components/Button/Button";
+import type { PostUserLoginRequest } from "@/apis/auth/auth.type";
+import { postUserLogin } from "@/apis/auth/auth.api";
 
 export default function Login() {
   const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const [loginForm, setLoginForm] = useState({
-    id: "",
+    username: "",
     password: "",
   });
 
@@ -20,7 +23,30 @@ export default function Login() {
     setLoginForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const isDisabled = !(loginForm.id.trim() && loginForm.password.trim());
+  const isDisabled = !(loginForm.username.trim() && loginForm.password.trim());
+
+  const handleUserLogin = async () => {
+    if (isDisabled || loading) return;
+
+    setLoading(true);
+    try {
+      const body: PostUserLoginRequest = {
+        username: loginForm.username,
+        password: loginForm.password,
+      };
+
+      const response = await postUserLogin(body);
+
+      console.log("로그인 성공", response);
+
+      navigate("/my-page");
+    } catch (e) {
+      console.error("로그인 실패", e);
+      alert("아이디 또는 비밀번호가 올바르지 않습니다."); // TODO: 모달로 변경
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <main className={styles.container}>
@@ -32,7 +58,7 @@ export default function Login() {
           <input
             className={styles.input}
             name="id"
-            value={loginForm.id}
+            value={loginForm.username}
             onChange={onChange}
             placeholder="아이디를 입력해 주세요."
           />
@@ -75,8 +101,12 @@ export default function Login() {
         </label>
 
         <div className={styles.buttonGroup}>
-          <Button type="submit" disabled={isDisabled} onClick={() => {}}>
-            로그인
+          <Button
+            type="submit"
+            disabled={isDisabled || loading}
+            onClick={handleUserLogin}
+          >
+            {loading ? "로그인 중..." : "로그인"}
           </Button>
 
           <button
