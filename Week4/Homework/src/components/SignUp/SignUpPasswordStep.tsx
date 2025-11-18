@@ -1,7 +1,7 @@
 import * as styles from "@/pages/SignUp/sign-up.css.ts";
 import { useState } from "react";
-import iconEyeClosed from "@/assets/icon-eye-closed.png";
-import iconEyeOpen from "@/assets/icon-eye-open.png";
+import iconEyeClosed from "@/assets/eye-closed-icon.png";
+import iconEyeOpen from "@/assets/eye-open-icon.png";
 import Button from "../Button/Button.tsx";
 import { getPasswordErrors } from "@/utils/getPasswordErrors.ts";
 import type { SignUpFormData } from "@/pages/SignUp/index.tsx";

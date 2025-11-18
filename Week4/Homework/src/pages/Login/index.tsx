@@ -1,8 +1,8 @@
 import * as styles from "./login.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import iconEyeClosed from "@/assets/icon-eye-closed.png";
-import iconEyeOpen from "@/assets/icon-eye-open.png";
+import iconEyeClosed from "@/assets/eye-closed-icon.png";
+import iconEyeOpen from "@/assets/eye-open-icon.png";
 import Button from "@/components/Button/Button";
 import type { PostUserLoginRequest } from "@/apis/auth/auth.type";
 import { postUserLogin } from "@/apis/auth/auth.api";

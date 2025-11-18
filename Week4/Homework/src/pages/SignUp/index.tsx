@@ -2,7 +2,7 @@ import * as styles from "./sign-up.css";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import iconBack from "@/assets/back.png";
+import iconBack from "@/assets/back-icon.png";
 import SignUpIdStep from "@/components/SignUp/SignUpIdStep";
 import SignUpPasswordStep from "@/components/SignUp/SignUpPasswordStep";
 import SignUpProfileStep from "@/components/SignUp/SignUpProfileStep";
