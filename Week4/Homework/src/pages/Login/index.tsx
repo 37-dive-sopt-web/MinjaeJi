@@ -82,7 +82,7 @@ export default function Login() {
           <button
             type="button"
             className={styles.signupButton}
-            onClick={() => navigate("/sign-up/1")}
+            onClick={() => navigate("/sign-up")}
           >
             회원가입
           </button>

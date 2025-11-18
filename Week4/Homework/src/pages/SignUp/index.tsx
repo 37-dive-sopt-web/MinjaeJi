@@ -1,7 +1,7 @@
 import * as styles from "./sign-up.css";
-
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 import iconBack from "@/assets/back.png";
 import SignUpIdStep from "@/components/SignUp/SignUpIdStep";
 import SignUpPasswordStep from "@/components/SignUp/SignUpPasswordStep";
@@ -17,14 +17,14 @@ type Step = keyof typeof stepComponents;
 
 export default function SignUp() {
   const navigate = useNavigate();
-  const { step } = useParams();
-  const currentStep = Number(step) as Step;
+  const [currentStep, setCurrentStep] = useState<Step>(1);
 
   const CurrentStep = stepComponents[currentStep];
 
   const handleNextBtnClick = () => {
-    const next = (currentStep + 1) as Step;
-    navigate(`/sign-up/${next}`);
+    if (currentStep < 3) {
+      setCurrentStep((prev) => (prev + 1) as Step);
+    }
   };
 
   const handlePrevBtnClick = () => {
@@ -32,20 +32,24 @@ export default function SignUp() {
       navigate("/login");
       return;
     }
-    const prev = (currentStep - 1) as Step;
-    navigate(`/sign-up/${prev}`);
+    setCurrentStep((prev) => (prev - 1) as Step);
   };
+
   return (
     <main className={styles.container}>
       <form className={styles.form}>
-        <button className={styles.backButton} onClick={handlePrevBtnClick}>
+        <button
+          type="button"
+          className={styles.backButton}
+          onClick={handlePrevBtnClick}
+        >
           <img src={iconBack} alt="뒤로가기" width={20} height={20} />
         </button>
 
         <h1 className={styles.title}>회원가입</h1>
         <AnimatePresence mode="wait">
           <motion.div
-            key={step}
+            key={currentStep}
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -40 }}

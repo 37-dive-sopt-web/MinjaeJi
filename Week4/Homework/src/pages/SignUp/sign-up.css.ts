@@ -3,12 +3,12 @@ import { style } from "@vanilla-extract/css";
 export const container = style({
   display: "flex",
   flexDirection: "column",
+  justifyContent: "center",
   alignItems: "center",
   height: "100%",
   backgroundColor: "#f8f9fb",
   gap: "24px",
   position: "relative",
-  paddingTop: "90px",
 });
 
 export const backButton = style({

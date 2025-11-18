@@ -1,7 +1,6 @@
 import * as styles from "./my-page.css";
 import { useState } from "react";
 import Button from "@/components/Button/Button";
-import Modal from "@/components/Modal/Modal";
 
 export default function MyPage() {
   const [form, setForm] = useState({
@@ -11,8 +10,6 @@ export default function MyPage() {
     age: "",
   });
 
-  const [modalOpen, setModalOpen] = useState(false);
-
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
@@ -20,7 +17,6 @@ export default function MyPage() {
 
   const handleEditUserInfo = () => {
     console.log("저장 됨:", form);
-    setModalOpen(true);
   };
 
   return (
@@ -77,13 +73,6 @@ export default function MyPage() {
           </Button>
         </form>
       </div>
-
-      <Modal
-        type="alert"
-        message="수정이 완료되었습니다."
-        isOpen={modalOpen}
-        onClose={() => setModalOpen(false)}
-      />
     </>
   );
 }
