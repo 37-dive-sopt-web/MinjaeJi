@@ -6,6 +6,7 @@ import iconBack from "@/assets/back-icon.png";
 import SignUpIdStep from "@/components/SignUp/SignUpIdStep";
 import SignUpPasswordStep from "@/components/SignUp/SignUpPasswordStep";
 import SignUpProfileStep from "@/components/SignUp/SignUpProfileStep";
+import Modal from "@/components/Modal/Modal";
 import { postUserSignUp } from "@/apis/users/users.api";
 
 const stepComponents = {
@@ -29,7 +30,13 @@ export default function SignUp() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
-  const [formData, setFormData] = useState<SignUpFormData>({
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+
+  const [currentStep, setCurrentStep] = useState<Step>(1);
+  const CurrentStep = stepComponents[currentStep];
+
+  const [signUpFormData, setSignUpFormData] = useState<SignUpFormData>({
     memberId: "",
     password: "",
     confirmPassword: "",
@@ -37,9 +44,6 @@ export default function SignUp() {
     email: "",
     age: "",
   });
-
-  const [currentStep, setCurrentStep] = useState<Step>(1);
-  const CurrentStep = stepComponents[currentStep];
 
   const handleNextBtnClick = () => {
     if (currentStep < 3) {
@@ -60,18 +64,18 @@ export default function SignUp() {
 
     try {
       await postUserSignUp({
-        username: formData.memberId,
-        password: formData.password,
-        name: formData.name,
-        email: formData.email,
-        age: parseInt(formData.age),
+        username: signUpFormData.memberId,
+        password: signUpFormData.password,
+        name: signUpFormData.name,
+        email: signUpFormData.email,
+        age: parseInt(signUpFormData.age),
       });
-
-      alert("회원가입이 완료되었습니다!");
-      navigate("/login");
+      setModalMessage("회원가입이 완료되었습니다. \n 로그인 후 이용해 주세요.");
+      setModalOpen(true);
     } catch (error) {
       console.error("회원가입 실패:", error);
-      alert("회원가입에 실패했습니다. 다시 시도해주세요.");
+      setModalMessage("회원가입에 실패했습니다. 다시 시도해 주세요.");
+      setModalOpen(true);
     } finally {
       setIsLoading(false);
     }
@@ -108,8 +112,8 @@ export default function SignUp() {
           >
             <CurrentStep
               onNext={getOnNextHandler()}
-              formData={formData}
-              setFormData={setFormData}
+              signUpFormData={signUpFormData}
+              setSignUpFormData={setSignUpFormData}
             />
           </motion.div>
         </AnimatePresence>
@@ -123,6 +127,15 @@ export default function SignUp() {
           이미 계정이 있나요? <strong>로그인</strong> 하러 가기
         </button>
       </form>
+      <Modal
+        type="alert"
+        message={modalMessage}
+        isOpen={modalOpen}
+        onClose={() => {
+          setModalOpen(false);
+          navigate("/login");
+        }}
+      />
     </main>
   );
 }

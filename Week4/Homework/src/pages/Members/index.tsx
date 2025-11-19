@@ -7,20 +7,24 @@ import type { User } from "@/apis/users/users.type";
 export default function Members() {
   const [searchId, setSearchId] = useState("");
   const [member, setMember] = useState<User | null>(null);
+  const [searched, setSearched] = useState(false);
 
   const handleSearchBtnClick = async () => {
     try {
       const userInfoResponse = await getUserInfo(parseInt(searchId));
       console.log("사용자 정보 조회 성공", userInfoResponse);
-      // 사용자 정보가 없으면 에러 처리
+
       if (!userInfoResponse.data) {
-        alert("사용자 정보를 가져올 수 없습니다.");
+        setMember(null);
+        setSearched(true);
         return;
       }
       setMember(userInfoResponse.data);
+      setSearched(true);
     } catch (e) {
-      console.error("로그인 실패", e);
-      alert("아이디 또는 비밀번호가 올바르지 않습니다."); // TODO: 모달로 변경
+      console.error("사용자 조회 실패", e);
+      setMember(null);
+      setSearched(true);
     }
   };
 
@@ -43,6 +47,12 @@ export default function Members() {
         <Button type="button" onClick={handleSearchBtnClick}>
           검색
         </Button>
+
+        {searched && !member && (
+          <div className={styles.resultBox}>
+            <p>조회된 멤버가 없습니다.</p>
+          </div>
+        )}
 
         {member && (
           <div className={styles.resultBox}>

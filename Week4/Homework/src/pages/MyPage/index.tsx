@@ -2,6 +2,7 @@ import * as styles from "./my-page.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "@/components/Button/Button";
+import Modal from "@/components/Modal/Modal";
 import { authStorage } from "@/utils/authStorage";
 import type { PatchUserInfoRequest } from "@/apis/users/users.type";
 import { patchUserInfo } from "@/apis/users/users.api";
@@ -9,6 +10,8 @@ import { patchUserInfo } from "@/apis/users/users.api";
 export default function MyPage() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
   const [form, setForm] = useState({
     username: "",
     name: "",
@@ -20,8 +23,8 @@ export default function MyPage() {
     const user = authStorage.getUserInfo();
 
     if (!user) {
-      alert("로그인이 필요합니다.");
-      navigate("/login");
+      setModalMessage("로그인이 필요합니다.");
+      setModalOpen(true);
       return;
     }
 
@@ -38,14 +41,21 @@ export default function MyPage() {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleModalClose = () => {
+    setModalOpen(false);
+    if (modalMessage === "로그인이 필요합니다.") {
+      navigate("/login");
+    }
+  };
+
   const handleEditUserInfo = async () => {
     if (loading) return;
 
     const userId = authStorage.getUserId();
 
     if (!userId) {
-      alert("사용자 정보를 찾을 수 없습니다.");
-      navigate("/login");
+      setModalMessage("사용자 정보를 찾을 수 없습니다.");
+      setModalOpen(true);
       return;
     }
 
@@ -62,11 +72,13 @@ export default function MyPage() {
 
       if (response.data) {
         authStorage.saveUserInfo(response.data);
-        alert("정보가 수정되었습니다!");
+        setModalMessage("정보가 수정되었습니다!");
+        setModalOpen(true);
       }
     } catch (e) {
       console.error("수정 실패:", e);
-      alert("정보 수정에 실패했습니다. 다시 시도해주세요.");
+      setModalMessage("정보 수정에 실패했습니다. 다시 시도해주세요.");
+      setModalOpen(true);
     } finally {
       setLoading(false);
     }
@@ -129,6 +141,13 @@ export default function MyPage() {
           </Button>
         </form>
       </div>
+
+      <Modal
+        type="alert"
+        message={modalMessage}
+        isOpen={modalOpen}
+        onClose={handleModalClose}
+      />
     </>
   );
 }
