@@ -25,6 +25,7 @@ export const modalBox = style({
 });
 
 export const message = style({
+  whiteSpace: "pre-line",
   fontSize: "17px",
   textAlign: "center",
   lineHeight: 1.5,
