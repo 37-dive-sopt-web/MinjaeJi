@@ -6,14 +6,14 @@ import type { SignUpFormData } from "@/pages/SignUp";
 
 type SignUpProfileStepProps = {
   onNext: () => void;
-  formData: Pick<SignUpFormData, "name" | "email" | "age">;
-  setFormData: React.Dispatch<React.SetStateAction<SignUpFormData>>;
+  signUpFormData: Pick<SignUpFormData, "name" | "email" | "age">;
+  setSignUpFormData: React.Dispatch<React.SetStateAction<SignUpFormData>>;
 };
 
 export default function SignUpProfileStep({
   onNext,
-  formData,
-  setFormData,
+  signUpFormData,
+  setSignUpFormData,
 }: SignUpProfileStepProps) {
   const [errors, setErrors] = useState({
     email: "",
@@ -23,7 +23,7 @@ export default function SignUpProfileStep({
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setSignUpFormData((prev) => ({ ...prev, [name]: value }));
 
     if (name === "email") {
       if (!value) {
@@ -53,9 +53,9 @@ export default function SignUpProfileStep({
   };
 
   const isDisabled =
-    !formData.name.trim() ||
-    !formData.email.trim() ||
-    !formData.age.trim() ||
+    !signUpFormData.name.trim() ||
+    !signUpFormData.email.trim() ||
+    !signUpFormData.age.trim() ||
     errors.email !== "" ||
     errors.age !== "";
 
@@ -67,7 +67,7 @@ export default function SignUpProfileStep({
           className={styles.input}
           name="name"
           placeholder="이름을 입력해 주세요."
-          value={formData.name}
+          value={signUpFormData.name}
           onChange={onChange}
         />
       </label>
@@ -78,7 +78,7 @@ export default function SignUpProfileStep({
           className={styles.input}
           name="email"
           placeholder="이메일을 입력해 주세요."
-          value={formData.email}
+          value={signUpFormData.email}
           onChange={onChange}
         />
         {errors.email && <p className={styles.errorMessage}>{errors.email}</p>}
@@ -90,7 +90,7 @@ export default function SignUpProfileStep({
           className={styles.input}
           name="age"
           placeholder="나이를 입력해 주세요."
-          value={formData.age}
+          value={signUpFormData.age}
           onChange={onChange}
         />
         {errors.age && <p className={styles.errorMessage}>{errors.age}</p>}

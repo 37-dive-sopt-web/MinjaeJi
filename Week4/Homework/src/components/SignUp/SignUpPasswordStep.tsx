@@ -8,31 +8,31 @@ import type { SignUpFormData } from "@/pages/SignUp/index.tsx";
 
 type SignUpPasswordStepProps = {
   onNext: () => void;
-  formData: Pick<SignUpFormData, "password" | "confirmPassword">;
-  setFormData: React.Dispatch<React.SetStateAction<SignUpFormData>>;
+  signUpFormData: Pick<SignUpFormData, "password" | "confirmPassword">;
+  setSignUpFormData: React.Dispatch<React.SetStateAction<SignUpFormData>>;
 };
 
 export default function SignUpPasswordStep({
   onNext,
-  formData,
-  setFormData,
+  signUpFormData,
+  setSignUpFormData,
 }: SignUpPasswordStepProps) {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const passwordErrors = getPasswordErrors(formData.password);
+  const passwordErrors = getPasswordErrors(signUpFormData.password);
   const firstError = passwordErrors[0];
   const isPasswordValid = passwordErrors.length === 0;
-  const isMatch = formData.password === formData.confirmPassword;
+  const isMatch = signUpFormData.password === signUpFormData.confirmPassword;
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prev) => ({ ...prev, password: e.target.value }));
+    setSignUpFormData((prev) => ({ ...prev, password: e.target.value }));
   };
 
   const handleConfirmPasswordChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setFormData((prev) => ({ ...prev, confirmPassword: e.target.value }));
+    setSignUpFormData((prev) => ({ ...prev, confirmPassword: e.target.value }));
   };
 
   return (
@@ -44,7 +44,7 @@ export default function SignUpPasswordStep({
             className={styles.input}
             type={showPassword ? "text" : "password"}
             placeholder="비밀번호를 입력해 주세요."
-            value={formData.password}
+            value={signUpFormData.password}
             onChange={handlePasswordChange}
             autoComplete="new-password"
           />
@@ -72,7 +72,7 @@ export default function SignUpPasswordStep({
             className={styles.input}
             type={showConfirmPassword ? "text" : "password"}
             placeholder="비밀번호를 다시 입력해 주세요."
-            value={formData.confirmPassword}
+            value={signUpFormData.confirmPassword}
             onChange={handleConfirmPasswordChange}
             autoComplete="new-password"
           />
@@ -90,9 +90,11 @@ export default function SignUpPasswordStep({
           </button>
         </div>
 
-        {formData.password && formData.confirmPassword && !isMatch && (
-          <p className={styles.errorMessage}>비밀번호가 일치하지 않습니다.</p>
-        )}
+        {signUpFormData.password &&
+          signUpFormData.confirmPassword &&
+          !isMatch && (
+            <p className={styles.errorMessage}>비밀번호가 일치하지 않습니다.</p>
+          )}
       </label>
 
       <Button
