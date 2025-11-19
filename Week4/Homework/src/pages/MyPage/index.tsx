@@ -2,7 +2,7 @@ import * as styles from "./my-page.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "@/components/Button/Button";
-import { storage } from "@/utils/storage";
+import { authStorage } from "@/utils/authStorage";
 import type { PatchUserInfoRequest } from "@/apis/users/users.type";
 import { patchUserInfo } from "@/apis/users/users.api";
 
@@ -17,7 +17,7 @@ export default function MyPage() {
   });
 
   useEffect(() => {
-    const user = storage.getUser();
+    const user = authStorage.getUserInfo();
 
     if (!user) {
       alert("로그인이 필요합니다.");
@@ -41,7 +41,7 @@ export default function MyPage() {
   const handleEditUserInfo = async () => {
     if (loading) return;
 
-    const userId = storage.getUserId();
+    const userId = authStorage.getUserId();
 
     if (!userId) {
       alert("사용자 정보를 찾을 수 없습니다.");
@@ -61,7 +61,7 @@ export default function MyPage() {
       console.log("수정 성공:", response);
 
       if (response.data) {
-        storage.setUser(response.data);
+        authStorage.saveUserInfo(response.data);
         alert("정보가 수정되었습니다!");
       }
     } catch (e) {

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import hamburgerIcon from "@/assets/hamburger-icon.png";
 import closeIcon from "@/assets/x-icon.png";
-import { storage } from "@/utils/storage";
+import { authStorage } from "@/utils/authStorage";
 import { deleteUserInfo } from "@/apis/users/users.api";
 
 export default function Header() {
@@ -18,7 +18,7 @@ export default function Header() {
 
   const handleLogOutClick = () => {
     if (confirm("정말 로그아웃 하시겠습니까?")) {
-      storage.clearUser();
+      authStorage.clearAuth();
       navigate("/login");
     }
     return;
@@ -27,7 +27,7 @@ export default function Header() {
   const handleWithDrawClick = async () => {
     if (!confirm("정말 탈퇴하시겠습니까?")) return;
 
-    const userId = storage.getUserId();
+    const userId = authStorage.getUserId();
     try {
       if (!userId) {
         throw new Error("사용자 ID를 가져올 수 없습니다.");

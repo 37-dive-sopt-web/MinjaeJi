@@ -6,7 +6,7 @@ import iconEyeOpen from "@/assets/eye-open-icon.png";
 import Button from "@/components/Button/Button";
 import type { PostUserLoginRequest } from "@/apis/auth/auth.type";
 import { postUserLogin } from "@/apis/auth/auth.api";
-import { storage } from "@/utils/storage";
+import { authStorage } from "@/utils/authStorage";
 import { getUserInfo } from "@/apis/users/users.api";
 
 export default function Login() {
@@ -44,7 +44,7 @@ export default function Login() {
         throw new Error("사용자 ID를 가져올 수 없습니다.");
       }
 
-      storage.setUserId(userId);
+      authStorage.saveUserId(userId);
 
       const userInfoResponse = await getUserInfo(userId);
       console.log("사용자 정보 조회 성공", userInfoResponse);
@@ -56,7 +56,7 @@ export default function Login() {
       }
 
       // 사용자 정보 저장
-      storage.setUser(userInfoResponse.data);
+      authStorage.saveUserInfo(userInfoResponse.data);
 
       navigate("/my-page");
     } catch (e) {
