@@ -22,9 +22,21 @@ export const headerContainer = style({
   borderBottom: "1px solid rgba(0, 0, 0, 0.12)",
 });
 
-export const leftTitle = style({
+export const titleWrapper = style({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "flex-start",
+  gap: "10px",
+});
+
+export const title = style({
   fontSize: "20px",
   fontWeight: 600,
+});
+
+export const subtitle = style({
+  fontSize: "15px",
+  color: "#565555ff",
 });
 
 export const navMenu = style({
